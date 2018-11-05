@@ -1,0 +1,103 @@
+// ## Base ##
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $main1-light;
+  max-width: 100vw;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+// ## Typography ##
+:root {
+  font-size: 16px;
+}
+
+body {
+  font-family: $f-family;
+  font-weight: $font-normal;
+  @include fluid-type(font-size, $screen-min, $screen-max, $f-p-size1, $f-p-size2);
+  line-height: 1.5;
+  color: $main2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $f-family-heading;
+  font-weight: $font-bold;
+  margin-top: 0.6em;
+  margin-bottom: 0.3em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+h1, .h1 {
+  @include fluid-type(font-size, $screen-min, $screen-max, $f-h1-size1, $f-h1-size2);
+  font-weight: $font-bolder;
+}
+
+h2, .h2 {
+  @include fluid-type(font-size, $screen-min, $screen-max, $f-h2-size1, $f-h2-size2);
+}
+
+h3, .h3 {
+  @include fluid-type(font-size, $screen-min, $screen-max, $f-h3-size1, $f-h3-size2);
+}
+
+h4, .h4 {
+  @include fluid-type(font-size, $screen-min, $screen-max, $f-h4-size1, $f-h4-size2);
+  font-family: $f-family;
+}
+
+h5, .h5 {
+  @include fluid-type(font-size, $screen-min, $screen-max, $f-bigger-size1, $f-bigger-size2);
+  font-weight: $font-normal;
+}
+
+p {
+  margin: 0.2em 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bigger {
+  @include fluid-type(font-size, $screen-min, $screen-max, $f-bigger-size1, $f-bigger-size2);
+  font-weight: $font-bold;
+}
+
+// Container
+.wrapper {
+  max-width: $wrapper;
+  padding-left: $wrapper-padding;
+  padding-right: $wrapper-padding;
+  margin-left: auto;
+  margin-right: auto;
+
+  &--small {
+      max-width: $wrapper--small;
+      padding-left: $wrapper-padding;
+      padding-right: $wrapper-padding;
+      margin-left: auto;
+      margin-right: auto;
+  }
+}
+
+.wrapper-padding {
+  padding-left: $wrapper-padding;
+  padding-right: $wrapper-padding;
+}

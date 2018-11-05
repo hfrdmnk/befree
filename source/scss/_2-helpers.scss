@@ -1,0 +1,102 @@
+// ## Functions ##
+
+// Fluid Type
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
+	$a: ($max-value - $min-value) / ($max-screen - $min-screen);
+	$b: $min-value - $a * $min-screen; 
+
+	$sign: "+";
+	@if ($b < 0) {
+		$sign: "-";
+		$b: abs($b);
+	}
+	@return calc(#{$a*100}vw #{$sign} #{$b});
+}
+
+
+// ## Mixins ##
+
+// Fluid Typography
+@mixin fluid-type($properties, $min-screen, $max-screen, $min-value, $max-value) {
+	& {
+		@each $property in $properties {
+			#{$property}: $min-value;
+		}
+
+		@media screen and (min-width: $min-screen) {
+			@each $property in $properties {
+				#{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value); 
+			}
+		}
+
+		@media screen and (min-width: $max-screen) {
+			@each $property in $properties {
+				#{$property}: $max-value;
+			}
+		}
+	}
+}
+
+// Breakpoint
+@mixin breakpoint($class) {
+	@if $class == small {
+	  @media screen and (min-width: $breakpoint-small) { @content; }
+	}
+   
+	@else if $class == medium {
+	  @media screen and (min-width: $breakpoint-medium) { @content; }
+	}
+   
+	@else if $class == large {
+	  @media screen and (min-width: $breakpoint-large) { @content; }
+	}
+   
+	@else {
+	  @warn "Breakpoint mixin supports: small, medium, normal";
+	}
+}
+
+
+// ## Variables ##
+
+// Color
+$main1: #FF6677;
+$main1-light: #FFBBCC;
+$main2: #5544FF;
+$main2-light: #BBCCFF;
+$white: #FFFFFF;
+
+// Layout
+$wrapper--small: 840px;
+$wrapper: 1260px;
+$wrapper-padding: 20px;
+
+$breakpoint-small: 52.500em; // 840px
+$breakpoint-medium: 78.750em; // 1260px 
+$breakpoint-large: 90.000em; // 1440px
+
+// Typography
+$f-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$f-family: 'museo-sans', $f-system;
+$f-family-heading: 'museo-slab', $f-system;
+$font-normal: 500;
+$font-bold: 700;
+$font-bolder: 900;
+
+// Font Sizes
+// Use these to control fluid font sizes
+$screen-min: 460px;
+$screen-max: 1260px;
+
+$f-p-size1: 16px;
+$f-p-size2: 18px;
+$f-bigger-size1: 17px;
+$f-bigger-size2: 20px;
+$f-h4-size1: 19px;
+$f-h4-size2: 27px;
+$f-h3-size1: 23px;
+$f-h3-size2: 36px;
+$f-h2-size1: 28px;
+$f-h2-size2: 47px;
+$f-h1-size1: 33px;
+$f-h1-size2: 63px;
