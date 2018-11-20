@@ -1,0 +1,120 @@
+// ## Bg Image ##
+#app {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+}
+
+// ## Header ##
+header {
+  height: 100vh;
+  min-height: 500px;
+}
+
+.header {
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title {
+    h1 {
+      margin: 0;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    a {
+      margin-top: 24px;
+    }
+  }
+
+  &__coords {
+    padding: 20px 0;
+  }
+}
+
+// ## Navigation ##
+nav {
+  z-index: 100;
+  position: fixed;
+  background-color: $main2;
+  color: $white;
+  display: flex;
+  align-items: stretch;
+  right: -100vw;
+  transition: transform 0.8s ease;
+}
+
+.nav {
+  &__colorbar {
+    width: 0vw;
+    height: 100vh;
+    background-color: $main1-light;
+  }
+
+  &__content {
+    width: 100vw;
+    height: 100vh;
+    min-height: 500px;
+  }
+
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    height: 100px;
+    padding: $wrapper-padding 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    padding: $wrapper-padding;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    li {
+      margin-top: $wrapper-padding;
+    }
+  }
+}
+
+// Open State
+.openMenu nav {
+  transform: translateX(-100vw);
+  transition: transform 0.8s ease 0.3s;
+}
+
+.openMenu .nav__colorbar {
+  animation: openMenu_blue 0.3s ease forwards;
+}
+
+.openMenu .topbar__menu-btn {
+  background-color: $white;
+  transition: background-color 0.8s ease 0.3s;
+
+  div {
+    background-color: $main2;
+    transition: background-color 0.8s ease 0.3s;
+  }
+}
+
+// Animation
+@keyframes openMenu_blue {
+  0% {
+    width: 0vw;
+  }
+  100% {
+    width: 100vw;
+  }
+}

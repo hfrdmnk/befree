@@ -59,7 +59,7 @@ gulp.task('sass', function() {
 
 // Images
 gulp.task('images', function() {
-    gulp.src('source/assets/img/*')
+    gulp.src('source/assets/img/**/*')
         .pipe(plumber())
         .pipe(images())
         .pipe(gulp.dest('dist/assets/img'));
@@ -97,6 +97,7 @@ gulp.task('vendors', function() {
     gulp.src(
             [
                 'source/js/vendors/vue.min.js',
+                'source/js/vendors/jquery.min.js',
                 'source/js/vendors/*.js'
             ])
         .pipe(concat('vendors.js'))

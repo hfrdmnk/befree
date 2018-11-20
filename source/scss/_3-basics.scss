@@ -30,10 +30,15 @@ body {
 }
 
 h1,
+.h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
-h5 {
+.h4,
+h5,
+.h5 {
   font-family: $f-family-heading;
   font-weight: $font-bold;
   margin-top: 0.6em;
@@ -82,19 +87,12 @@ a {
 
 // Container
 .wrapper {
+  width: 100%;
   max-width: $wrapper;
   padding-left: $wrapper-padding;
   padding-right: $wrapper-padding;
   margin-left: auto;
   margin-right: auto;
-
-  &--small {
-      max-width: $wrapper--small;
-      padding-left: $wrapper-padding;
-      padding-right: $wrapper-padding;
-      margin-left: auto;
-      margin-right: auto;
-  }
 }
 
 .wrapper-padding {

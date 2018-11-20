@@ -23,17 +23,51 @@
 
 </head>
 <body>
-  <div id="app">
 
+  <!-- Content inside of #app is partly managed by Vue.js -->
+  <div id="app" :style="{ backgroundImage: 'url(assets/img/bg/' + currentCity + '.png)' }">
+    <nav>
+      <div class="nav__colorbar"></div>
+      <div class="nav__content">
+        <div class="nav__wrapper wrapper">
+          <div class="nav__logo">
+              <img class="topbar__logo" src="assets/svg/logo-white.svg" alt="Befree Logo">
+          </div>
+          <ul class="nav__list">
+            <li><a href="#" class="h1">Lineup</a></li>
+            <li><a href="#" class="h1">About</a></li>
+            <li><a href="#" class="h1">Tickets</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Section -->
     <header>
-      <div class="wrapper">
-        <h1>Befree Barcelona</h1>
-        <h2 class="h3">9.8.2019 – 11.8.2019</h2>
-        <p>{{ currentCity }}</p>
-        <p>{{ cityInfo['fields']['Country'] }}</p>
-        <p>{{ acts }}</p>
+      <div class="wrapper header__wrapper">
+        <div class="header__topbar topbar">
+          <img class="topbar__logo" src="assets/svg/logo.svg" alt="Befree Logo">
+          <a class="topbar__cta btn btn--square" href="changeCity.html">Change city</a>
+          <div class="topbar__menu-btn" @click="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div class="header__title">
+          <h1>Befree {{ cityInfo['fields']['place'] }}</h1>
+          <h2 class="h3">{{ cityInfo['fields']['date'] }}</h2>
+          <a href="tickets.html" class="btn h4">Grab your tickets now!</a>
+        </div>
+        <p class="header__coords h5">{{ cityInfo['fields']['latitude'] }} {{ cityInfo['fields']['longitude'] }}</p>
       </div>
     </header>
+
+    <!-- <div class="wrapper">
+      <p>{{ currentCity }}</p>
+      <p>{{ cityInfo['fields']['country'] }}</p>
+      <p>{{ groupedActs['headliner'] }}</p>
+    </div> -->
 
   </div>
 
