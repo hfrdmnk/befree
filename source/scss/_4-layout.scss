@@ -7,13 +7,12 @@
 
 // ## Header ##
 header {
-  height: 100vh;
-  min-height: 500px;
+  min-height: 100vh;
 }
 
 .header {
   &__wrapper {
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -38,19 +37,18 @@ header {
   }
 }
 
-// ## Navigation ##
-nav {
+// ## Main-Navigation ##
+.main-nav {
   z-index: 100;
   position: fixed;
   background-color: $main2;
   color: $white;
   display: flex;
   align-items: stretch;
+  min-height: 100vh;
   right: -100vw;
   transition: transform 0.8s ease;
-}
 
-.nav {
   &__colorbar {
     width: 0vw;
     height: 100vh;
@@ -59,12 +57,11 @@ nav {
 
   &__content {
     width: 100vw;
-    height: 100vh;
-    min-height: 500px;
+    min-height: 100%;
   }
 
   &__wrapper {
-    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -90,12 +87,12 @@ nav {
 }
 
 // Open State
-.openMenu nav {
+.openMenu .main-nav {
   transform: translateX(-100vw);
   transition: transform 0.8s ease 0.3s;
 }
 
-.openMenu .nav__colorbar {
+.openMenu .main-nav__colorbar {
   animation: openMenu_blue 0.3s ease forwards;
 }
 
@@ -116,5 +113,16 @@ nav {
   }
   100% {
     width: 100vw;
+  }
+}
+
+// ## Content Sections ##
+.con-section {
+  padding: $wrapper-padding * 2 0;
+
+  &__title {
+    * {
+      margin: 0;
+    }
   }
 }

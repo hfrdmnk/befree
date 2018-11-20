@@ -26,21 +26,9 @@
 
   <!-- Content inside of #app is partly managed by Vue.js -->
   <div id="app" :style="{ backgroundImage: 'url(assets/img/bg/' + currentCity + '.png)' }">
-    <nav>
-      <div class="nav__colorbar"></div>
-      <div class="nav__content">
-        <div class="nav__wrapper wrapper">
-          <div class="nav__logo">
-              <img class="topbar__logo" src="assets/svg/logo-white.svg" alt="Befree Logo">
-          </div>
-          <ul class="nav__list">
-            <li><a href="#" class="h1">Lineup</a></li>
-            <li><a href="#" class="h1">About</a></li>
-            <li><a href="#" class="h1">Tickets</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+
+    <!-- partial:html-partials/_mainnav.html -->
+    <!-- partial -->
 
     <!-- Header Section -->
     <header>
@@ -62,12 +50,31 @@
         <p class="header__coords h5">{{ cityInfo['fields']['latitude'] }} {{ cityInfo['fields']['longitude'] }}</p>
       </div>
     </header>
+    
+    <!-- Main Section -->
+    <main>
 
-    <!-- <div class="wrapper">
-      <p>{{ currentCity }}</p>
-      <p>{{ cityInfo['fields']['country'] }}</p>
-      <p>{{ groupedActs['headliner'] }}</p>
-    </div> -->
+      <!-- About Section -->
+      <section class="con-section con-section--about">
+        <div class="wrapper con-section__wrapper">
+          <div class="con-section__title">
+            <h4 class="h5">Who we are</h4>
+            <h3 class="h2">The Festival</h3>
+          </div>
+          <div class="con-section__content">
+            <div class="con-section__col--1-4"></div>
+            <div class="con-section__col--3-4">
+                <video src="assets/video/teaser.mp4" controls>
+                  Sorry, your browser doesn't support embedded videos, 
+                  but don't worry, you can <a href="assets/video/teaser.mp4">download it</a>
+                  and watch it with your favorite video player!
+                </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
 
   </div>
 

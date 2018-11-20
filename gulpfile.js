@@ -11,16 +11,18 @@ var autoprefixer = require('autoprefixer'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     images = require('gulp-imagemin'),
+    injectPartials = require('gulp-inject-partials'),
     browserSync = require('browser-sync').create();
 
 // paths
 var styleSrc = 'source/scss/*.scss',
-    htmlSrc = 'source/*.html',
+    htmlSrc = 'source/**/*.html',
     vendorSrc = 'source/js/vendors/',
     scriptSrc = 'source/js/*.js',
     imgSrc = 'source/assets/img/**/*',
     faviconSrc = 'source/assets/favicon/**/*',
-    svgSrc = 'source/assets/svg/**/*';
+    svgSrc = 'source/assets/svg/**/*',
+    videoSrc = 'source/assets/video/**/*';
 
 
 
@@ -33,6 +35,7 @@ var styleSrc = 'source/scss/*.scss',
 gulp.task('html', function() {
     return gulp.src('source/**/*.html')
         .pipe(plumber())
+        .pipe(injectPartials())
         .pipe(gulp.dest('dist'));
 });
 
@@ -79,6 +82,13 @@ gulp.task('favicon', function() {
         .pipe(gulp.dest('dist/assets/favicon'));
 });
 
+// Videos
+gulp.task('videos', function() {
+    gulp.src('source/assets/video/**/*')
+        .pipe(plumber())
+        .pipe(gulp.dest('dist/assets/video'));
+});
+
 // Uglify js files
 gulp.task('scripts', function() {
     gulp.src(
@@ -122,6 +132,7 @@ gulp.task('watch', function(){
     gulp.watch(imgSrc,['images']);
     gulp.watch(faviconSrc,['favicon']);
     gulp.watch(svgSrc,['svg']);
+    gulp.watch(videoSrc,['videos']);
     gulp.watch(styleSrc,['sass']);
     gulp.watch(scriptSrc,['scripts']);
     gulp.watch(vendorSrc,['vendors']);
@@ -131,4 +142,4 @@ gulp.task('watch', function(){
 
 
 // use default task to launch Browsersync and watch JS files
-gulp.task('default', [ 'html', 'images', 'favicon', 'svg', 'sass', 'scripts', 'vendors', 'watch'], function () {});
+gulp.task('default', [ 'html', 'images', 'favicon', 'svg', 'videos', 'sass', 'scripts', 'vendors', 'watch'], function () {});
