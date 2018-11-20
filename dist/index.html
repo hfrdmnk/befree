@@ -48,21 +48,25 @@
     <!-- Header Section -->
     <header>
       <div class="wrapper header__wrapper">
+        
+        <!-- partial:html-partials/_topbar.html -->
         <div class="header__topbar topbar">
-          <img class="topbar__logo" src="assets/svg/logo.svg" alt="Befree Logo">
-          <a class="topbar__cta btn btn--square" href="changeCity.html">Change city</a>
-          <div class="topbar__menu-btn" @click="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
+    <img class="topbar__logo" src="assets/svg/logo.svg" alt="Befree Logo">
+    <a class="topbar__cta btn btn--square" href="changeCity.html">Change city</a>
+    <div class="topbar__menu-btn" @click="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+        <!-- partial -->
+
         <div class="header__title">
-          <h1>Befree {{ cityInfo['fields']['place'] }}</h1>
-          <h2 class="h3">{{ cityInfo['fields']['date'] }}</h2>
+          <h1>Befree {{ festivalInfo[0].fields.place }}</h1>
+          <h2 class="h3">{{ festivalInfo[0].fields.date }}</h2>
           <a href="tickets.html" class="btn h4">Grab your tickets now!</a>
         </div>
-        <p class="header__coords h5">{{ cityInfo['fields']['latitude'] }} {{ cityInfo['fields']['longitude'] }}</p>
+        <p class="header__coords h5">{{ festivalInfo[0].fields.latitude }} {{ festivalInfo[0].fields.longitude }}</p>
       </div>
     </header>
     

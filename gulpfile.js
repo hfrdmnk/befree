@@ -93,8 +93,7 @@ gulp.task('videos', function() {
 gulp.task('scripts', function() {
     gulp.src(
             [
-                'source/js/*.js',
-                'source/js/init.js'
+                'source/js/*.js'
             ])
         .pipe(plumber())
         .pipe(concat('script.js'))
