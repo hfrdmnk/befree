@@ -32,7 +32,7 @@ var controller = new Vue({
         },
 
         // Fetch Data
-        fetchData: function(base, target, filter) {
+        fetchData: function(base, target, filter, sort) {
             var self = this
 
             axios({
@@ -41,7 +41,8 @@ var controller = new Vue({
                     'Authorization': 'Bearer ' + self.airtable.key
                 },
                 params: {
-                    filterByFormula: filter || ''
+                    filterByFormula: filter || '',
+                    sort: sort || ''
                 }
             }).then(function(res) {
                 self[target] = res.data.records
@@ -56,11 +57,12 @@ var controller = new Vue({
             var headlinerFilter = 'IF(category = "Headliner", TRUE(), FALSE())'
             var mediumActFilter = 'IF(category = "Medium Act", TRUE(), FALSE())'
             var smallActFilter = 'IF(category = "Small Act", TRUE(), FALSE())'
+            var sortByIndex = '' // '[{field: "index", direction: "asc"}]'
 
             this.fetchData('festivalInfo', 'festivalInfo', festivalInfoFilter)
-            this.fetchData('acts', 'headliner', headlinerFilter)
-            this.fetchData('acts', 'mediumActs', mediumActFilter)
-            this.fetchData('acts', 'smallActs', smallActFilter)
+            this.fetchData('acts', 'headliner', headlinerFilter, sortByIndex)
+            this.fetchData('acts', 'mediumActs', mediumActFilter, sortByIndex)
+            this.fetchData('acts', 'smallActs', smallActFilter, sortByIndex)
         }
     },
     mounted: function() {

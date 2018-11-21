@@ -117,6 +117,32 @@
         </div>
       </section>
 
+      <!-- Lineup Section -->
+      <section class="con-section con-section--about">
+        <div class="wrapper con-section__wrapper">
+          <div class="con-section__title">
+            <h4 class="h5">Our guests</h4>
+            <h3 class="h2">The Acts</h3>
+          </div>
+          <div class="con-section__content">
+            <div class="con-section__col--1-4"></div>
+            <div class="con-section__col--3-4">
+                <div class="acts-preview">
+                  <div class="acts-preview__item" v-for="act in headliner">
+                    <div class="acts-preview__container">
+                      <img :src="'assets/img/acts/' + act.fields.picName + '.jpg'" alt="">
+                    </div>
+                    <p class="acts-preview__name h4">{{ act.fields.name }}</p>
+                  </div>
+                </div>
+                <div class="con-section__cta">
+                  <a class="btn bigger" href="about.html">Learn more about the festival</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
   </div>
