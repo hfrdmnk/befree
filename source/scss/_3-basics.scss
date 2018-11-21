@@ -84,7 +84,7 @@ a {
   font-weight: $font-bold;
 }
 
-// Container
+// ## Container ##
 .wrapper {
   width: 100%;
   max-width: $wrapper;
@@ -97,4 +97,10 @@ a {
 .wrapper-padding {
   padding-left: $wrapper-padding;
   padding-right: $wrapper-padding;
+}
+
+// ## Misc ##
+::selection {
+  background-color: $main2;
+  color: $white;
 }

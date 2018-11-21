@@ -1,0 +1,20 @@
+// ## Home ##
+
+// About Section 
+.con-section--about {
+  video {
+    margin-bottom: .3em;
+  }
+
+  .social-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      fill: $main2;
+      width: 3.5em;
+      padding: 1em;
+    }
+  }
+}
