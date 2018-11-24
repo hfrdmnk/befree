@@ -555,8 +555,7 @@ main {
 }
 
 .loading-overlay__logo {
-  width: 10vw;
-  max-width: 500px;
+  width: 200px;
 }
 
 .city-select {
@@ -590,7 +589,8 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
+  width: auto;
+  max-width: 500px;
   margin-bottom: 1em;
   padding: 1em;
   transition: all 0.3s ease;
