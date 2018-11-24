@@ -11,6 +11,10 @@
     justify-content: center;
     align-items: center;
 
+    &--desktop {
+      display: none;
+    }
+
     svg {
       fill: $main2;
       width: 3.5em;
@@ -137,6 +141,24 @@
         text-align: right;
         width: auto;
         max-width: 100%;
+      }
+    }
+  }
+}
+
+@include breakpoint(medium) {
+  .con-section--about {
+    .social-list {
+      display: none;
+
+      &--desktop {
+        display: flex;
+
+        svg {
+          width: 1.5em;
+          margin-right: 1em;
+          padding: 0;
+        }
       }
     }
   }

@@ -1,6 +1,14 @@
 <div class="header__topbar topbar">
-    <img class="topbar__logo" src="assets/svg/logo.svg" alt="Befree Logo">
-    <a class="topbar__cta btn btn--square" href="#">Change city</a>
+    <a href="/" class="topbar__logo">
+      <img src="assets/svg/logo.svg" alt="Befree Logo">
+    </a>
+    <div class="topbar__actions">
+      <ul class="topbar__nav main-nav--desktop bigger">
+        <!-- partial:_navlist-items.html -->
+        <!-- partial -->
+      </ul>
+      <a class="topbar__cta btn btn--square bigger" href="#" @click.prevent="selectCityOverlay = true">Change city</a>
+    </div>
     <div class="topbar__menu-btn" @click="toggleMenu()">
       <div></div>
       <div></div>

@@ -111,6 +111,12 @@ img {
   }
 }
 
+@include breakpoint(medium) {
+  .wrapper {
+    max-width: $wrapper;
+  }
+}
+
 // ## Misc ##
 ::selection {
   background-color: $main2;

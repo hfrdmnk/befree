@@ -3,7 +3,7 @@
   height: 100vh;
   width: 100vw;
   position: fixed;
-  z-index: -1;
+  z-index: -1000;
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
@@ -11,6 +11,7 @@
 
 // ## Header ##
 header {
+  position: relative;
   min-height: 100vh;
 }
 
@@ -38,6 +39,34 @@ header {
 
   &__coords {
     padding: 20px 0;
+  }
+
+  &__img {
+    display: none;
+  }
+}
+
+// Breakpoints
+@include breakpoint(medium) {
+  .header {
+    &__img {
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 30%;
+      left: 25%;
+      width: 100vw;
+      max-width: 1700px;
+    }
+  }
+}
+
+@include breakpoint(large) {
+  .header {
+    &__img {
+      left: 30%;
+      top: 25%;
+    }
   }
 }
 
@@ -120,6 +149,18 @@ header {
   }
 }
 
+// Breakpoints
+@include breakpoint(small) {
+  .main-nav {
+    display: none;
+  }
+}
+
+// ## Main ## 
+main {
+  padding: $wrapper-padding 0;
+}
+
 // ## Content Sections ##
 .con-section {
   padding: $wrapper-padding * 2 0;
@@ -167,6 +208,44 @@ header {
 
     &__cta {
       justify-content: flex-end;
+    }
+  }
+}
+
+@include breakpoint(medium) {
+  .con-section {
+    &__col--1-4 {
+      width: 25%;
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    &__col--3-4 {
+      width: 75%;
+    }
+  }
+}
+
+@include breakpoint(large) {
+  .con-section {
+    &__title {
+      position: relative;
+    }
+  }
+
+  @supports(writing-mode: vertical-lr) {
+    .con-section {
+      &__title {
+        h4 {
+          position: absolute;
+          writing-mode: vertical-lr;
+          top: 0.8em;
+          left: -1.5em;
+          transform: rotate(180deg);
+        }
+      }
     }
   }
 }

@@ -27,14 +27,30 @@
   <!-- Content inside of #app is partly managed by Vue.js -->
   <section id="app">
 
+    <!-- Loading Screen -->
+    <div class="loading-overlay" v-if="loading">
+        <img class="loading-overlay__logo" src="assets/svg/logo.svg" alt="Befree Logo">
+    </div>
+
+    <!-- City Selection -->
+    <div class="city-select" v-if="selectCityOverlay">
+      <p class="h2 city-select__title">Choose your City:</p>
+      <div class="city-select__choices">
+        <div class="city-select__item" v-for="city in locations" @click="selectCity(city.fields.place)">
+          <p class="city-select__city h4">{{ city.fields.place }},&nbsp;{{ city.fields.country }}</p>
+          <p class="city-select__coords">{{ city.fields.latitude }}&nbsp;{{ city.fields.longitude }}</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Background Image -->
-    <div class="bg" :style="{ backgroundImage: 'url(assets/img/bg/' + currentCity + '.png)' }"></div>
+    <div v-if="festivalInfo[0]" class="bg" :style="{ backgroundImage: 'url(assets/img/bg/' + currentCity + '.png)' }"></div>
 
     <!-- partial:html-partials/_mainnav.html -->
     <!-- partial -->
 
     <!-- Header Section -->
-    <header>
+    <header v-if="festivalInfo[0]">
       <div class="wrapper header__wrapper">
         
         <!-- partial:html-partials/_topbar.html -->
@@ -47,20 +63,29 @@
         </div>
         <p class="header__coords h5">{{ festivalInfo[0].fields.latitude }} {{ festivalInfo[0].fields.longitude }}</p>
       </div>
+
+      <img :src="'assets/img/header/' + currentCity + '.png'" class="header__img">
+
     </header>
     
     <!-- Main Section -->
-    <main>
+    <main v-if="festivalInfo[0]">
 
       <!-- About Section -->
       <section class="con-section con-section--about">
         <div class="wrapper con-section__wrapper">
           <div class="con-section__title">
-            <h4 class="h5">Who we are</h4>
+            <h4 class="h5">Who&nbsp;we&nbsp;are</h4>
             <h3 class="h2">The Festival</h3>
           </div>
           <div class="con-section__content">
-            <div class="con-section__col--1-4"></div>
+            <div class="con-section__col--1-4">
+                <h5 class="h4">Follow us here</h5>
+                <ul class="social-list social-list--desktop">
+                  <!-- partial:html-partials/_sociallist-items.html -->
+                  <!-- partial -->
+                </ul>
+            </div>
             <div class="con-section__col--3-4">
                 <video src="assets/video/teaser.mp4" controls poster="assets/img/content/video_thumbnail.jpg">
                   Sorry, your browser doesn't support embedded videos, 
@@ -84,7 +109,7 @@
       <section class="con-section con-section--acts">
         <div class="wrapper con-section__wrapper">
           <div class="con-section__title">
-            <h4 class="h5">Our guests</h4>
+            <h4 class="h5">Our&nbsp;guests</h4>
             <h3 class="h2">The Acts</h3>
           </div>
           <div class="con-section__content">
@@ -111,7 +136,7 @@
       <section class="con-section con-section--location">
         <div class="wrapper con-section__wrapper">
           <div class="con-section__title">
-            <h4 class="h5">Where we are</h4>
+            <h4 class="h5">Where&nbsp;we&nbsp;are</h4>
             <h3 class="h2">The Location</h3>
           </div>
           <div class="con-section__content">
@@ -125,7 +150,7 @@
                 <iframe class="map" :src="festivalInfo[0].fields.mapURL"frameborder="0" allowfullscreen></iframe>
               </div>
               <div class="con-section__cta">
-                <a class="btn bigger" href="#">See our other locations</a>
+                <a class="btn bigger" href="#" @click.prevent="selectCityOverlay = true">See our other locations</a>
               </div>
             </div>
           </div>
@@ -134,7 +159,7 @@
     </main>
 
     <!-- Footer Section -->
-    <footer>
+    <footer v-if="festivalInfo[0]">
 
       <!-- Countdown -->
       <section class="countdown" v-if="!countdownExpired">
