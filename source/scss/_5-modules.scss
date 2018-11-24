@@ -12,17 +12,18 @@
   }
 
   &__cta {
-    margin-right: 65px;
+    margin-right: 69px;
   }
 
   &__menu-btn {
     height: 45px;
-    width: 65px;
+    width: 69px;
     z-index: 200;
     position: fixed;
     right: 0;
     background-color: $main2;
     cursor: pointer;
+    transition: background-color 0.5s ease;
 
     div {
       position: absolute;
@@ -31,6 +32,7 @@
       top: 10px;
       height: 3px;
       background-color: $main1-light;
+      transition: background-color 0.5s ease;
 
       &:nth-child(2) {
         top: 21px;

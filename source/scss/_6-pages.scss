@@ -18,3 +18,66 @@
     }
   }
 }
+
+// Acts Section
+.con-section--acts {
+  .acts-preview {
+    &__container {
+      position: relative;
+      overflow: hidden;
+
+      .img-overlay {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 110%;
+        background-color: $main2;
+        transform: translateX(-100%);
+        transition: all .4s cubic-bezier(0.35, 0.66, 0.6, 0.29);
+      }
+
+      img {
+        transition: all .01s ease .2s;
+      }
+
+      &:hover .img-overlay {
+        transform: translateX(100%);
+      }
+
+      &:hover img {
+        transform: scale(1.2) rotate(-5deg);
+      }
+    }
+
+    &__name {
+      position: relative;
+      z-index: 10;
+      transform: translateY(-50%);
+      background-color: $white;
+      margin: 0 auto;
+      text-align: center;
+      max-width: 80%;
+      padding: .8em 1em;
+    }
+  }
+}
+
+// Location Section
+.con-section--location {
+  .map-container {
+    position: relative;
+    padding-bottom: 56%;
+    height: 0;
+    overflow: hidden;
+
+    .map {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

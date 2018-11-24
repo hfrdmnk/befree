@@ -124,6 +124,10 @@ header {
 .con-section {
   padding: $wrapper-padding * 2 0;
 
+  &__col--1-4 {
+    margin-bottom: $wrapper-padding / 2;
+  }
+
   &__title {
     h3 {
       margin-top: 0;
@@ -141,6 +145,7 @@ header {
   }
 
   &__cta {
+    padding: 1em 0;
     display: flex;
     justify-content: center;
   }

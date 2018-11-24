@@ -39,6 +39,7 @@
           <img class="topbar__logo" src="assets/svg/logo-white.svg" alt="Befree Logo">
       </div>
       <ul class="main-nav__list">
+        <li><a href="index.html" class="h1">Home</a></li>
         <li><a href="lineup.html" class="h1">Lineup</a></li>
         <li><a href="about.html" class="h1">About</a></li>
         <li><a href="tickets.html" class="h1">Tickets</a></li>
@@ -117,8 +118,8 @@
         </div>
       </section>
 
-      <!-- Lineup Section -->
-      <section class="con-section con-section--about">
+      <!-- Acts Section -->
+      <section class="con-section con-section--acts">
         <div class="wrapper con-section__wrapper">
           <div class="con-section__title">
             <h4 class="h5">Our guests</h4>
@@ -130,14 +131,40 @@
                 <div class="acts-preview">
                   <div class="acts-preview__item" v-for="act in headliner">
                     <div class="acts-preview__container">
+                      <div class="img-overlay"></div>
                       <img :src="'assets/img/acts/' + act.fields.picName + '.jpg'" alt="">
                     </div>
                     <p class="acts-preview__name h4">{{ act.fields.name }}</p>
                   </div>
                 </div>
                 <div class="con-section__cta">
-                  <a class="btn bigger" href="about.html">Learn more about the festival</a>
+                  <a class="btn bigger" href="lineup.html">See the full lineup</a>
                 </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Location Section -->
+      <section class="con-section con-section--location">
+        <div class="wrapper con-section__wrapper">
+          <div class="con-section__title">
+            <h4 class="h5">Where we are</h4>
+            <h3 class="h2">The Location</h3>
+          </div>
+          <div class="con-section__content">
+            <div class="con-section__col--1-4">
+              <h5 class="h4">Address</h5>
+              <p>{{ festivalInfo[0].fields.street }}<br>
+              {{ festivalInfo[0].fields.place }}, {{ festivalInfo[0].fields.country }}</p>
+            </div>
+            <div class="con-section__col--3-4">
+              <div class="map-container">
+                <iframe class="map" :src="festivalInfo[0].fields.mapURL"frameborder="0" allowfullscreen></iframe>
+              </div>
+              <div class="con-section__cta">
+                <a class="btn bigger" href="lineup.html">See our other locations</a>
+              </div>
             </div>
           </div>
         </div>
