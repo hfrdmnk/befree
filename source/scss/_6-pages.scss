@@ -3,7 +3,7 @@
 // About Section 
 .con-section--about {
   video {
-    margin-bottom: .3em;
+    margin-bottom: 0.3em;
   }
 
   .social-list {
@@ -35,11 +35,11 @@
         width: 110%;
         background-color: $main2;
         transform: translateX(-100%);
-        transition: all .4s cubic-bezier(0.35, 0.66, 0.6, 0.29);
+        transition: all 0.4s cubic-bezier(0.35, 0.66, 0.6, 0.29);
       }
 
       img {
-        transition: all .01s ease .2s;
+        transition: all 0.01s ease 0.2s;
       }
 
       &:hover .img-overlay {
@@ -59,7 +59,7 @@
       margin: 0 auto;
       text-align: center;
       max-width: 80%;
-      padding: .8em 1em;
+      padding: 0.8em 1em;
     }
   }
 }

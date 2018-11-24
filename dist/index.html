@@ -163,14 +163,45 @@
                 <iframe class="map" :src="festivalInfo[0].fields.mapURL"frameborder="0" allowfullscreen></iframe>
               </div>
               <div class="con-section__cta">
-                <a class="btn bigger" href="lineup.html">See our other locations</a>
+                <a class="btn bigger" href="#">See our other locations</a>
               </div>
             </div>
           </div>
         </div>
       </section>
-
     </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <section class="countdown" v-if="!countdownExpired">
+        <div class="countdown__wave"></div>
+        <div class="countdown__content">
+          <div class="countdown__wrapper wrapper">
+            <h3 class="h2">Time to go...</h3>
+            <div class="countdown__numbers">
+              <div class="countdown__item">
+                <p class="h3">{{ countdownDays }}</p>
+                <p class="h4">Days</p>
+              </div>
+              <div class="countdown__item">
+                <p class="h3">{{ countdownHours }}</p>
+                <p class="h4">Hours</p>
+              </div>
+              <div class="countdown__item">
+                <p class="h3">{{ countdownMinutes }}</p>
+                <p class="h4">Minutes</p>
+              </div>
+              <div class="countdown__item">
+                <p class="h3">{{ countdownSeconds }}</p>
+                <p class="h4">Seconds</p>
+              </div>
+            </div>
+            <a class="btn btn--square" href="tickets.html">Grab your tickets now!</a>
+          </div>
+        </div>
+        <div class="countdown__wave"></div>
+      </section>
+    </footer>
 
   </div>
 

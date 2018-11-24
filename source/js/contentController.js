@@ -1,3 +1,5 @@
+Vue.config.devtools = true;
+
 // Vue Instance
 var controller = new Vue({
     el: '#app',
@@ -11,169 +13,142 @@ var controller = new Vue({
 
         // Fetched Data
         festivalInfo: [],
+        locations: [],
         headliner: [],
         mediumActs: [],
         smallActs: [],
         
-        
         // Current City (from Localstorage)
         currentCity: 'Barcelona',
 
-        // UI State
+        // Helpers
+        date: null,
+        now: Math.trunc((new Date()).getTime() / 1000),
         loading: true
     },
     computed: {
-        
+        // Countdown Elements
+        countdownSeconds: function() {
+            return (this.date - this.now) % 60;
+        },
+
+        countdownMinutes: function() {
+            return Math.trunc((this.date - this.now) / 60) % 60;
+        },
+
+        countdownHours: function() {
+            return Math.trunc((this.date - this.now) / 60 / 60) % 24;
+        },
+
+        countdownDays: function() {
+            return Math.trunc((this.date - this.now) / 60 / 60 / 24);
+        },
+
+        countdownExpired: function() {
+            if(this.date - this.now < 0) {
+                return true
+            } else {
+                return false
+            }
+        }
     },
     methods: {
         // Enable / Disable Menu
         toggleMenu: function() {
-            document.querySelector('body').classList.toggle('openMenu')
+            document.querySelector('body').classList.toggle('openMenu');
         },
 
-        // Fetch Data
-        fetchData: function(base, target, filter, sort) {
-            var self = this
+        // // Fetch Data
+        // fetchData: function(base, target, filter, sort) {
+        //     var self = this;
 
-            axios({
-                url: self.airtable.url + self.airtable.id + '/' + base,
-                headers: {
-                    'Authorization': 'Bearer ' + self.airtable.key
-                },
-                params: {
-                    filterByFormula: filter || '',
-                    sort: sort || ''
-                }
-            }).then(function(res) {
-                self[target] = res.data.records
-            })
-        }, 
+        //     axios({
+        //         url: self.airtable.url + self.airtable.id + '/' + base,
+        //         headers: {
+        //             'Authorization': 'Bearer ' + self.airtable.key
+        //         },
+        //         params: {
+        //             filterByFormula: filter || '',
+        //             sort: sort || ''
+        //         }
+        //     }).then(function(res) {
+        //         self[target] = res.data.records;
+        //     });
+        // }, 
 
-        // Get Data about Festival and Acts
-        getData: function() {
-            // Filters
-            var city = this.currentCity
-            var festivalInfoFilter = 'IF(place = "' + city + '", TRUE(), FALSE())'
-            var headlinerFilter = 'IF(category = "Headliner", TRUE(), FALSE())'
-            var mediumActFilter = 'IF(category = "Medium Act", TRUE(), FALSE())'
-            var smallActFilter = 'IF(category = "Small Act", TRUE(), FALSE())'
-            var sortByIndex = '' // '[{field: "index", direction: "asc"}]'
+        // // Get Data about Festival and Acts
+        // getData: function() {
+        //     // Filters
+        //     var city = this.currentCity;
+        //     var festivalInfoFilter = 'IF(place = "' + city + '", TRUE(), FALSE())';
+        //     var headlinerFilter = 'IF(category = "Headliner", TRUE(), FALSE())';
+        //     var mediumActFilter = 'IF(category = "Medium Act", TRUE(), FALSE())';
+        //     var smallActFilter = 'IF(category = "Small Act", TRUE(), FALSE())';
+        //     var sortByIndex = ''; // '[{field: "index", direction: "asc"}]';
 
-            this.fetchData('festivalInfo', 'festivalInfo', festivalInfoFilter)
-            this.fetchData('acts', 'headliner', headlinerFilter, sortByIndex)
-            this.fetchData('acts', 'mediumActs', mediumActFilter, sortByIndex)
-            this.fetchData('acts', 'smallActs', smallActFilter, sortByIndex)
-        }
+        //     this.fetchData('festivalInfo', 'festivalInfo', festivalInfoFilter);
+        //     this.fetchData('acts', 'headliner', headlinerFilter, sortByIndex);
+        //     this.fetchData('acts', 'mediumActs', mediumActFilter, sortByIndex);
+        //     this.fetchData('acts', 'smallActs', smallActFilter, sortByIndex);
+        // }
     },
     mounted: function() {
-        this.getData()
+        var self = this;
+
+        // Get Data from current Location
+        axios.get(self.airtable.url + self.airtable.id + "/festivalInfo",
+            { 
+                headers: { Authorization: "Bearer " + self.airtable.key },
+                params: { filterByFormula: "IF(place = '" + self.currentCity + "', TRUE(), FALSE())" }
+            }).then(function(res) { 
+                self.festivalInfo = res.data.records
+                
+                // Get Data From all Location
+                axios.get(self.airtable.url + self.airtable.id + "/festivalInfo",
+                    {
+                        headers: { Authorization: "Bearer " + self.airtable.key }
+                    }).then(function(res) {
+                        self.locations = res.data.records;
+
+                        // Get Headliner
+                        axios.get(self.airtable.url + self.airtable.id + "/acts",
+                        {
+                            headers: { Authorization: "Bearer " + self.airtable.key },
+                            params: { filterByFormula: "IF(category = 'Headliner', TRUE(), FALSE())" }
+                        }).then(function(res) {
+                            self.headliner = res.data.records;
+
+                            // Get Medium Acts
+                            axios.get(self.airtable.url + self.airtable.id + "/acts",
+                            {
+                                headers: { Authorization: "Bearer " + self.airtable.key },
+                                params: { filterByFormula: "IF(category = 'Medium Acts', TRUE(), FALSE())" }
+                            }).then(function(res) {
+                                self.mediumActs = res.data.records;
+
+                                // Get Small Acts
+                                axios.get(self.airtable.url + self.airtable.id + "/acts",
+                                {
+                                    headers: { Authorization: "Bearer " + self.airtable.key },
+                                    params: { filterByFormula: "IF(category = 'Small Acts', TRUE(), FALSE())" }
+                                }).then(function(res) {
+                                    self.smallActs = res.data.records;
+
+                                    // All Data fetched!
+                                    // Countdown Prep
+                                    self.date = Math.trunc(Date.parse(self.festivalInfo[0].fields.startTimestamp) / 1000);
+                                    window.setInterval(function() {
+                                        self.now = Math.trunc((new Date()).getTime() / 1000);
+                                    }, 1000);
+
+                                }).catch(function(err) { console.log(err); })
+
+                            }).catch(function(err) { console.log(err); })
+
+                        }).catch(function(err) { console.log(err); })
+
+                    }).catch(function(err) { console.log(err); })
+                
+            }).catch(function(err) { console.log(err); })      
     }
-})
-
-// // Airtable Api Infos
-// // Link to Airtable Base: https://airtable.com/tbl58E8pNAC0c1l6I/viwjqHvJWB0I6z7Pm
-// var airtableKey = "keyO54NEvmY5VwVOO";
-// var airtableID = "appJfav4dlJdonWhY";
-
-// // Vue Instance
-// var app = new Vue({
-//     el: '#app',
-//     data: {
-
-//         // Infos about all locations
-//         festivalInfo: [],
-//         // All acts
-//         acts: [],
-//         // Current city
-//         currentCity: 'Barcelona' // localStorage.getItem('befree_city')
-
-//     },
-//     computed: {
-
-//         // Get only relevant info for this location from festivalInfo
-//         cityInfo: function() {
-//             var dataObj = this.festivalInfo
-
-//             for(var i = 0; i < dataObj.length; i++) {
-//                 var place = dataObj[i].fields.place.toLowerCase();
-//                 if(place == this.currentCity) {
-//                     return dataObj[i]
-//                 }
-//             }
-//         },
-
-//         // Group artists based on category
-//         groupedActs: function() {
-//             var dataObj = this.acts
-//             var tempActs = {
-//                 headliner: [],
-//                 mediumActs: [],
-//                 smallActs: []
-//             }
-
-//             for(var i = 0; i < dataObj.length; i++) {
-//                 if(dataObj[i].fields.category == 'Headliner') {
-//                     tempActs.headliner.push(dataObj[i])
-//                 }
-//                 if(dataObj[i].fields.category == 'Medium Acts') {
-//                     tempActs.mediumActs.push(dataObj[i])
-//                 }
-//                 if(dataObj[i].fields.category == 'Small Acts') {
-//                     tempActs.smallActs.push(dataObj[i])
-//                 }
-//             }
-
-//             return tempActs
-//         }
-
-//     },
-//     mounted: function() {
-
-//         // Load data
-//         this.loadInfos();
-//         this.loadActs();
-
-//     },
-//     methods: {
-//         // Enable / Disable Menu
-//         toggleMenu: function() {
-//             document.querySelector('body').classList.toggle('openMenu')
-//         },
-
-//         // Load contant of table Festival Info
-//         loadInfos: function() {
-//             var self = this
-//             var app_id = airtableID
-//             var app_key = airtableKey
-//             this.festivalInfo = []
-//             axios.get("https://api.airtable.com/v0/" + app_id + "/festivalInfo?view=Grid%20view", {
-//                     headers: {
-//                         Authorization: "Bearer " + app_key
-//                     }
-//                 }
-//             ).then(function(response) {
-//                 self.festivalInfo = response.data.records
-//             }).catch(function(error) {
-//                 console.log(error)
-//             })
-//         },
-
-//         // Load content of table Acts
-//         loadActs: function() {
-//             var self = this
-//             var app_id = airtableID
-//             var app_key = airtableKey
-//             this.acts = []
-//             axios.get("https://api.airtable.com/v0/" + app_id + "/acts?view=Grid%20view", {
-//                     headers: {
-//                         Authorization: "Bearer " + app_key
-//                     }
-//                 }
-//             ).then(function(response) {
-//                 self.acts = response.data.records
-//             }).catch(function(error) {
-//                 console.log(error)
-//             })
-//         }
-//     }
-// })
+});

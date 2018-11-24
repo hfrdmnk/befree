@@ -71,7 +71,7 @@
   &--square {
     background-color: $main2;
     color: $main1-light;
-    padding: 0.3em 0.8em;
+    padding: 0.4em 0.8em;
     border: 0.2em solid $main2;
     transition: all 0.3s ease;
 
@@ -96,5 +96,59 @@
   }
   100% {
     clip-path: inset(0% 0% 0% 100%);
+  }
+}
+
+// ## Countdown ##
+.countdown {
+  display: flex;
+  flex-direction: column;
+
+  &__wave {
+    height: 101px;
+    background-image: url("data:image/svg+xml,%3Csvg id='waves' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 72'%3E%3Ctitle%3Ewaves%3C/title%3E%3Cpath d='M500,72H0V22C54,22,88,0,133,0s84,39,140,39c53,0,80-26,126-26,15,0,79,9,101,9Z' style='fill:%2354f'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    transform: translateY(1px);
+
+    &:last-child {
+      transform: rotate(180deg) translateY(1px);
+    }
+  }
+
+  &__content {
+    background-color: $main2;
+    color: $white;
+    text-align: center
+  }
+
+  h3 {
+    margin-bottom: $wrapper-padding / 2;
+  }
+
+  &__numbers {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: $wrapper-padding / 2;
+  }
+
+  &__item {
+    width: 50%;
+    margin-bottom: 1em;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .btn--square {
+    background-color: $white;
+    border-color: $white;
+    color: $main2;
+
+    &:hover {
+      color: $white;
+      background-color: transparent;
+    }
   }
 }
