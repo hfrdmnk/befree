@@ -68,10 +68,11 @@ $white: #FFFFFF;
 
 // Layout
 $wrapper--small: 540px;
+$wrapper--medium: 768px;
 $wrapper: 1260px;
 $wrapper-padding: 24px;
 
-$breakpoint-small: 52.500em; // 840px
+$breakpoint-small: 48em; // 768px
 $breakpoint-medium: 78.750em; // 1260px 
 $breakpoint-large: 90.000em; // 1440px
 

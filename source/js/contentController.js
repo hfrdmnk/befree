@@ -56,41 +56,7 @@ var controller = new Vue({
         // Enable / Disable Menu
         toggleMenu: function() {
             document.querySelector('body').classList.toggle('openMenu');
-        },
-
-        // // Fetch Data
-        // fetchData: function(base, target, filter, sort) {
-        //     var self = this;
-
-        //     axios({
-        //         url: self.airtable.url + self.airtable.id + '/' + base,
-        //         headers: {
-        //             'Authorization': 'Bearer ' + self.airtable.key
-        //         },
-        //         params: {
-        //             filterByFormula: filter || '',
-        //             sort: sort || ''
-        //         }
-        //     }).then(function(res) {
-        //         self[target] = res.data.records;
-        //     });
-        // }, 
-
-        // // Get Data about Festival and Acts
-        // getData: function() {
-        //     // Filters
-        //     var city = this.currentCity;
-        //     var festivalInfoFilter = 'IF(place = "' + city + '", TRUE(), FALSE())';
-        //     var headlinerFilter = 'IF(category = "Headliner", TRUE(), FALSE())';
-        //     var mediumActFilter = 'IF(category = "Medium Act", TRUE(), FALSE())';
-        //     var smallActFilter = 'IF(category = "Small Act", TRUE(), FALSE())';
-        //     var sortByIndex = ''; // '[{field: "index", direction: "asc"}]';
-
-        //     this.fetchData('festivalInfo', 'festivalInfo', festivalInfoFilter);
-        //     this.fetchData('acts', 'headliner', headlinerFilter, sortByIndex);
-        //     this.fetchData('acts', 'mediumActs', mediumActFilter, sortByIndex);
-        //     this.fetchData('acts', 'smallActs', smallActFilter, sortByIndex);
-        // }
+        }
     },
     mounted: function() {
         var self = this;

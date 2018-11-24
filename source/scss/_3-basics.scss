@@ -104,6 +104,13 @@ img {
   padding-right: $wrapper-padding;
 }
 
+// Breakpoints
+@include breakpoint(small) {
+  .wrapper {
+    max-width: $wrapper--medium;
+  }
+}
+
 // ## Misc ##
 ::selection {
   background-color: $main2;

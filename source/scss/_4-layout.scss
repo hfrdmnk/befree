@@ -124,8 +124,18 @@ header {
 .con-section {
   padding: $wrapper-padding * 2 0;
 
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   &__col--1-4 {
+    width: 100%;
     margin-bottom: $wrapper-padding / 2;
+  }
+
+  &__col--3-4 {
+    width: 100%;
   }
 
   &__title {
@@ -139,14 +149,24 @@ header {
     }
   }
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-  }
-
   &__cta {
     padding: 1em 0;
     display: flex;
     justify-content: center;
+  }
+}
+
+// Breakpoints 
+@include breakpoint(small) {
+  .con-section {
+    &__col--3-4 {
+      p {
+        width: 83%;
+      }
+    }
+
+    &__cta {
+      justify-content: flex-end;
+    }
   }
 }
