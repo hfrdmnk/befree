@@ -149,13 +149,16 @@ var controller = new Vue({
         }
     },
     mounted: function() {
+        this.loading = true;
         this.getLocations();
 
         if(localStorage.getItem('selectedCity')) {
             this.currentCity = localStorage.getItem('selectedCity');
+            this.loading = false;
             this.getData();
         } else {
             this.selectCityOverlay = true;
+            this.loading = false;
         }
     }
 });

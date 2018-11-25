@@ -189,6 +189,9 @@ main {
     h4 {
       margin: 0;
       line-height: 1;
+      overflow-wrap: normal;
+      word-wrap: normal;
+      hyphens: none;
     }
   }
 

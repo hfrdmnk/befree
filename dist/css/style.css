@@ -717,6 +717,11 @@ main {
 .con-section__title h4 {
   margin: 0;
   line-height: 1;
+  overflow-wrap: normal;
+  word-wrap: normal;
+  -webkit-hyphens: none;
+      -ms-hyphens: none;
+          hyphens: none;
 }
 
 .con-section__cta {
@@ -772,7 +777,7 @@ main {
   width: 100vw;
   height: 100vh;
   background-color: #FFBBCC;
-  z-index: 500;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -790,7 +795,7 @@ main {
   min-height: 100vh;
   overflow-y: scroll;
   background-color: #FFBBCC;
-  z-index: 1000;
+  z-index: 500;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -953,7 +958,7 @@ main {
 
 .btn--square {
   background-color: #5544FF;
-  color: #FFBBCC;
+  color: #FFFFFF;
   padding: 0.4em 0.8em;
   border: 0.2em solid #5544FF;
   transition: all 0.3s ease;

@@ -6,7 +6,7 @@
   width: 100vw;
   height: 100vh;
   background-color: $main1-light;
-  z-index: 500;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +25,7 @@
   min-height: 100vh;
   overflow-y: scroll;
   background-color: $main1-light;
-  z-index: 1000;
+  z-index: 500;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,7 +200,7 @@
 
   &--square {
     background-color: $main2;
-    color: $main1-light;
+    color: $white;
     padding: 0.4em 0.8em;
     border: 0.2em solid $main2;
     transition: all 0.3s ease;
