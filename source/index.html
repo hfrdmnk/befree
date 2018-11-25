@@ -105,13 +105,12 @@
             <h3 class="h2">The Acts</h3>
           </div>
           <div class="con-section__content">
-            <div class="con-section__col--1-4"></div>
             <div class="con-section__col--3-4">
                 <div class="acts-preview">
                   <div class="acts-preview__item" v-for="act in headliner">
                     <div class="acts-preview__container">
                       <div class="img-overlay"></div>
-                      <img :src="'assets/img/acts/' + act.fields.picName + '.jpg'" alt="">
+                      <img :src="'assets/img/acts/' + act.fields.picName + '.jpg'" :alt="act.fields.name">
                     </div>
                     <p class="acts-preview__name h4">{{ act.fields.name }}</p>
                   </div>
@@ -142,7 +141,7 @@
                 <iframe class="map" :src="festivalInfo[0].fields.mapURL"frameborder="0" allowfullscreen></iframe>
               </div>
               <div class="con-section__cta">
-                <a class="btn bigger" href="#" @click.prevent="selectCityOverlay = true">See our other locations</a>
+                <a class="btn bigger" href="#" @click.prevent="selectCityOverlay = true">Change to other location</a>
               </div>
             </div>
           </div>

@@ -138,7 +138,7 @@
                 <div class="act__img">
                   <div class="act__img-container">
                     <div class="act__img-overlay"></div>
-                    <img :src="'assets/img/acts/' + act.fields.picName + '.jpg'" alt="">
+                    <img :src="'assets/img/acts/' + act.fields.picName + '.jpg'" :alt="act.fields.name">
                   </div>
                   <div class="act__quickinfo">
                     <p class="h4 act__name">{{ act.fields.name }}</p>
@@ -175,13 +175,12 @@
             <h3 class="h2">Medium Acts</h3>
           </div>
           <div class="con-section__content">
-            <div class="con-section__col--1-4"></div>
             <div class="con-section__col--3-4">
               <div class="act act--medium" v-for="act in mediumActs">
                 <div class="act__img">
                   <div class="act__img-container">
                     <div class="act__img-overlay"></div>
-                    <img :src="'assets/img/acts/' + act.fields.picName + '.jpg'" alt="">
+                    <img :src="'assets/img/acts/' + act.fields.picName + '.jpg'" :alt="act.fields.name">
                   </div>
                   <div class="act__quickinfo">
                     <p class="h4 act__name">{{ act.fields.name }}</p>
@@ -217,7 +216,6 @@
             <h3 class="h2">Small Acts</h3>
           </div>
           <div class="con-section__content">
-            <div class="con-section__col--1-4"></div>
             <div class="con-section__col--3-4">
               <div class="act act--small" v-for="act in smallActs">
                 <div class="act__img">

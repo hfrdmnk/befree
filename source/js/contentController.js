@@ -111,6 +111,9 @@ var controller = new Vue({
                                     self.now = Math.trunc((new Date()).getTime() / 1000);
                                 }, 1000);
 
+                                // Init stuff
+                                baguetteBox.run('.gallery');
+
                                 // Some nice ASCII Art
                                 console.log("%c  ____        __                 _                          _       ", "color: #54F");
                                 console.log("%c | __ )  ___ / _|_ __ ___  ___  (_)___   _ __ ___  __ _  __| |_   _ ", "color: #54F");
