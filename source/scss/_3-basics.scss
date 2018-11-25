@@ -20,7 +20,9 @@ body {
   font-size: 16px;
 }
 
-body {
+body,
+.form__input,
+input {
   font-family: $f-family;
   font-weight: $font-normal;
   @include fluid-type(font-size, $screen-min, $screen-max, $f-p-size1, $f-p-size2);

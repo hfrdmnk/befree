@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Befree Festival – Tickets</title>
+  <meta name="author" content="Dominik Hofer">
+  <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
+  <meta name="keywords" content="Befree, Festival, Bern, Switzerland, Berlin, Germany, Barcelona, Spain">
+  <meta name="theme-color" content="#5544FF">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon/favicon-16x16.png" sizes="16x16">  
+  <link rel="icon" type="image/png" href="assets/favicon/favicon-32x32.png" sizes="32x32">  
+  <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96">  
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://use.typekit.net/dak1slp.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.min.css">
+
+</head>
+<body>
+
+  <!-- Content inside of #app is partly managed by Vue.js -->
+  <div id="app">
+
+    <!-- Loading Screen -->
+    <!-- partial:html-partials/_loading-screen.html -->
+    <!-- partial -->
+
+    <!-- City Selection -->
+    <!-- partial:html-partials/_city-select.html -->
+    <!-- partial -->
+
+    <!-- Background Image -->
+    <div v-if="festivalInfo[0]" class="bg" :style="{ backgroundImage: 'url(assets/img/bg/' + currentCity + '.png)' }"></div>
+
+    <!-- partial:html-partials/_mainnav.html -->
+    <!-- partial -->
+
+    <!-- Header Section -->
+    <header v-if="festivalInfo[0]">
+      <div class="wrapper header__wrapper">
+        
+        <!-- partial:html-partials/_topbar.html -->
+        <!-- partial -->
+
+        <div class="header__title">
+          <h1>Tickets</h1>
+          <h2 class="h3">for the Befree Festival</h2>
+        </div>
+        <p class="header__coords h5">{{ festivalInfo[0].fields.latitude }} {{ festivalInfo[0].fields.longitude }}</p>
+      </div>
+
+      <img :src="'assets/img/header/tickets.png'" class="header__img">
+
+    </header>
+    
+    <!-- Main Section -->
+    <main v-if="festivalInfo[0]">
+
+      <!-- Form Section -->
+      <form action="#" class="con-section con-section--form" method="GET">
+        <div class="wrapper con-section__wrapper">
+          <div class="con-section__title">
+            <h4 class="h5">Be&nbsp;quick!</h4>
+            <h3 class="h2">Order tickets</h3>
+          </div>
+          <div class="con-section__content">
+            <div class="con-section__col--1-4">
+                <h5 class="h4">About you</h5>
+            </div>
+            <div class="con-section__col--3-4">
+              <div class="form__row">
+                <div class="form__item form__item--1-3">
+                  <label for="gender" class="form__label">Gender:*</label>
+                  <select class="form__input bigger" name="gender" v-model="form.gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form__row">
+                <div class="form__item form__item--1-2">
+                  <label for="prename" class="form__label">Prename:*</label>
+                  <input type="text" class="form__input bigger" name="prename" placeholder="John" v-model="form.prename" required>
+                </div>
+                <div class="form__item form__item--1-2">
+                  <label for="name" class="form__label">Name:*</label>
+                  <input type="text" class="form__input bigger" name="name" placeholder="Doe" v-model="form.name" required>
+                </div>
+              </div>
+              <div class="form__row">
+                <div class="form__item">
+                  <label for="email" class="form__label">Email:*</label>
+                  <input type="email" class="form__input bigger" name="email" placeholder="johndoe@gmail.com" v-model="form.email" required>
+                </div>
+              </div>
+              <div class="form__row">
+                <div class="form__item">
+                  <label for="address" class="form__label">Address:*</label>
+                  <input type="text" class="form__input bigger" name="address" placeholder="Doestreet 1" v-model="form.address" required>
+                </div>
+              </div>
+              <div class="form__row">
+                <div class="form__item form__item--1-3">
+                  <label for="zip" class="form__label">ZIP Code:*</label>
+                  <input type="number" class="form__input bigger" name="zip" placeholder="1111" v-model="form.zip" required>
+                </div>
+                <div class="form__item form__item--2-3">
+                  <label for="city" class="form__label">City:*</label>
+                  <input type="text" class="form__input bigger" name="city" placeholder="Doecity" v-model="form.city" required>
+                </div>
+              </div>
+            </div>
+            <div class="con-section__col--1-4">
+              <h5 class="h4">Package</h5>
+            </div>
+            <div class="con-section__col--3-4">
+              <div class="form__row">
+                <div class="form__item">
+                    <label for="location" class="form__label">Befree Location:*</label>
+                    <select class="form__input bigger" name="location" v-model="form.location" required>
+                      <option v-for="city in locations" :value="city.fields.place">{{ city.fields.place }} – {{ city.fields.date }}</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="form__row">
+                <div class="form__item">
+                    <label for="location" class="form__label">Befree Package:*</label>
+                    <select class="form__input bigger" name="package" v-model="form.package" required>
+                      <option value="1-Day Package – 50&euro;">1-Day Package – 50&euro;</option>
+                      <option value="2-Day Package – 90&euro;">2-Day Package – 90&euro;</option>
+                      <option value="3-Day Package – 120&euro;">3-Day Package – 120&euro;</option>
+                    </select>
+                  </div>
+              </div>
+            </div>
+            <div class="con-section__col--1-4">
+              <h5 class="h4">Summary</h5>
+            </div>
+            <div class="con-section__col--3-4">
+              <p>Gender: <span class="bigger">{{ form.gender }}</span></p>
+              <p>Name: <span class="bigger">{{ form.prename }} {{ form.name }}</span></p>
+              <p>Email: <span class="bigger">{{ form.email }}</span></p>
+              <p>Address: <span class="bigger">{{ form.address }}</span></p>
+              <p>City: <span class="bigger">{{ form.zip }} {{ form.city }}</span></p>
+              <p>Befree Location: <span class="bigger">{{ form.location }}</span></p>
+              <p>Befree Package: <span class="bigger">{{ form.package }}</span></p>
+              <div class="con-section__cta">
+                <input type="submit" class="btn btn--square bigger" value="Proceed to payment">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </main>
+
+    <!-- Footer Section -->
+    <!-- partial:html-partials/_footer.html -->
+    <!-- partial -->
+
+  </div>
+
+<!-- JS -->
+<script src="js/vendors.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

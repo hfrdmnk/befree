@@ -4,16 +4,16 @@
   <!-- Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Befree Festival</title>
+  <title>Befree Festival – Tickets</title>
   <meta name="author" content="Dominik Hofer">
   <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
   <meta name="keywords" content="Befree, Festival, Bern, Switzerland, Berlin, Germany, Barcelona, Spain">
   <meta name="theme-color" content="#5544FF">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">  
-  <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">  
-  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96">  
+  <link rel="icon" type="image/png" href="assets/favicon/favicon-16x16.png" sizes="16x16">  
+  <link rel="icon" type="image/png" href="assets/favicon/favicon-32x32.png" sizes="32x32">  
+  <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96">  
 
   <!-- Fonts -->
   <link rel="stylesheet" href="https://use.typekit.net/dak1slp.css">
@@ -25,7 +25,7 @@
 <body>
 
   <!-- Content inside of #app is partly managed by Vue.js -->
-  <section id="app">
+  <div id="app">
 
     <!-- Loading Screen -->
     <!-- partial:html-partials/_loading-screen.html -->
@@ -111,135 +111,116 @@
         <!-- partial -->
 
         <div class="header__title">
-          <h1>Befree {{ festivalInfo[0].fields.place }}</h1>
-          <h2 class="h3">{{ festivalInfo[0].fields.date }}</h2>
-          <a href="tickets.html" class="btn h4">Grab your tickets now!</a>
+          <h1>Tickets</h1>
+          <h2 class="h3">for the Befree Festival</h2>
         </div>
         <p class="header__coords h5">{{ festivalInfo[0].fields.latitude }} {{ festivalInfo[0].fields.longitude }}</p>
       </div>
 
-      <img :src="'assets/img/header/' + currentCity + '.png'" class="header__img">
+      <img :src="'assets/img/header/tickets.png'" class="header__img">
 
     </header>
     
     <!-- Main Section -->
     <main v-if="festivalInfo[0]">
 
-      <!-- About Section -->
-      <section class="con-section con-section--about">
+      <!-- Form Section -->
+      <form action="#" class="con-section con-section--form" method="GET">
         <div class="wrapper con-section__wrapper">
           <div class="con-section__title">
-            <h4 class="h5">Who&nbsp;we&nbsp;are</h4>
-            <h3 class="h2">The Festival</h3>
+            <h4 class="h5">Be&nbsp;quick!</h4>
+            <h3 class="h2">Order tickets</h3>
           </div>
           <div class="con-section__content">
             <div class="con-section__col--1-4">
-                <h5 class="h4">Follow us here</h5>
-                <ul class="social-list social-list--desktop">
-                  <!-- partial:html-partials/_sociallist-items.html -->
-                  <li><a href="https://instagram.com" target="_blank" rel="noopener" title="Befree Instagram">
-  <svg viewBox="0 0 24 24">
-      <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
-  </svg>
-</a></li>
-<li><a href="https://twitter.com" target="_blank" rel="noopener" title="Befree Twitter">
-  <svg viewBox="0 0 24 24">
-      <path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" />
-  </svg>
-</a></li>
-<li><a href="https://youtube.com" target="_blank" rel="noopener" title="Befree Youtube">
-  <svg viewBox="0 0 24 24">
-      <path d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z" />
-  </svg>
-</a></li>
-                  <!-- partial -->
-                </ul>
+                <h5 class="h4">About you</h5>
             </div>
             <div class="con-section__col--3-4">
-                <video src="assets/video/teaser.mp4" controls poster="assets/img/content/video_thumbnail.jpg">
-                  Sorry, your browser doesn't support embedded videos, 
-                  but don't worry, you can <a href="assets/video/teaser.mp4">download it</a>
-                  and watch it with your favorite video player!
-                </video>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <ul class="social-list">
-                  <!-- partial:html-partials/_sociallist-items.html -->
-                  <li><a href="https://instagram.com" target="_blank" rel="noopener" title="Befree Instagram">
-  <svg viewBox="0 0 24 24">
-      <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
-  </svg>
-</a></li>
-<li><a href="https://twitter.com" target="_blank" rel="noopener" title="Befree Twitter">
-  <svg viewBox="0 0 24 24">
-      <path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" />
-  </svg>
-</a></li>
-<li><a href="https://youtube.com" target="_blank" rel="noopener" title="Befree Youtube">
-  <svg viewBox="0 0 24 24">
-      <path d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z" />
-  </svg>
-</a></li>
-                  <!-- partial -->
-                </ul>
-                <div class="con-section__cta">
-                  <a class="btn bigger" href="about.html">Learn more about the festival</a>
+              <div class="form__row">
+                <div class="form__item form__item--1-3">
+                  <label for="gender" class="form__label">Gender:*</label>
+                  <select class="form__input bigger" name="gender" v-model="form.gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
+              </div>
+              <div class="form__row">
+                <div class="form__item form__item--1-2">
+                  <label for="prename" class="form__label">Prename:*</label>
+                  <input type="text" class="form__input bigger" name="prename" placeholder="John" v-model="form.prename" required>
+                </div>
+                <div class="form__item form__item--1-2">
+                  <label for="name" class="form__label">Name:*</label>
+                  <input type="text" class="form__input bigger" name="name" placeholder="Doe" v-model="form.name" required>
+                </div>
+              </div>
+              <div class="form__row">
+                <div class="form__item">
+                  <label for="email" class="form__label">Email:*</label>
+                  <input type="email" class="form__input bigger" name="email" placeholder="johndoe@gmail.com" v-model="form.email" required>
+                </div>
+              </div>
+              <div class="form__row">
+                <div class="form__item">
+                  <label for="address" class="form__label">Address:*</label>
+                  <input type="text" class="form__input bigger" name="address" placeholder="Doestreet 1" v-model="form.address" required>
+                </div>
+              </div>
+              <div class="form__row">
+                <div class="form__item form__item--1-3">
+                  <label for="zip" class="form__label">ZIP Code:*</label>
+                  <input type="number" class="form__input bigger" name="zip" placeholder="1111" v-model="form.zip" required>
+                </div>
+                <div class="form__item form__item--2-3">
+                  <label for="city" class="form__label">City:*</label>
+                  <input type="text" class="form__input bigger" name="city" placeholder="Doecity" v-model="form.city" required>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Acts Section -->
-      <section class="con-section con-section--acts">
-        <div class="wrapper con-section__wrapper">
-          <div class="con-section__title">
-            <h4 class="h5">Our&nbsp;guests</h4>
-            <h3 class="h2">The Acts</h3>
-          </div>
-          <div class="con-section__content">
-            <div class="con-section__col--1-4"></div>
+            <div class="con-section__col--1-4">
+              <h5 class="h4">Package</h5>
+            </div>
             <div class="con-section__col--3-4">
-                <div class="acts-preview">
-                  <div class="acts-preview__item" v-for="act in headliner">
-                    <div class="acts-preview__container">
-                      <div class="img-overlay"></div>
-                      <img :src="'assets/img/acts/' + act.fields.picName + '.jpg'" alt="">
-                    </div>
-                    <p class="acts-preview__name h4">{{ act.fields.name }}</p>
+              <div class="form__row">
+                <div class="form__item">
+                    <label for="location" class="form__label">Befree Location:*</label>
+                    <select class="form__input bigger" name="location" v-model="form.location" required>
+                      <option v-for="city in locations" :value="city.fields.place">{{ city.fields.place }} – {{ city.fields.date }}</option>
+                    </select>
                   </div>
-                </div>
-                <div class="con-section__cta">
-                  <a class="btn bigger" href="lineup.html">See the full lineup</a>
-                </div>
+              </div>
+              <div class="form__row">
+                <div class="form__item">
+                    <label for="location" class="form__label">Befree Package:*</label>
+                    <select class="form__input bigger" name="package" v-model="form.package" required>
+                      <option value="1-Day Package – 50&euro;">1-Day Package – 50&euro;</option>
+                      <option value="2-Day Package – 90&euro;">2-Day Package – 90&euro;</option>
+                      <option value="3-Day Package – 120&euro;">3-Day Package – 120&euro;</option>
+                    </select>
+                  </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Location Section -->
-      <section class="con-section con-section--location">
-        <div class="wrapper con-section__wrapper">
-          <div class="con-section__title">
-            <h4 class="h5">Where&nbsp;we&nbsp;are</h4>
-            <h3 class="h2">The Location</h3>
-          </div>
-          <div class="con-section__content">
             <div class="con-section__col--1-4">
-              <h5 class="h4">Address</h5>
-              <p>{{ festivalInfo[0].fields.street }}<br>
-              {{ festivalInfo[0].fields.place }}, {{ festivalInfo[0].fields.country }}</p>
+              <h5 class="h4">Summary</h5>
             </div>
             <div class="con-section__col--3-4">
-              <div class="map-container">
-                <iframe class="map" :src="festivalInfo[0].fields.mapURL"frameborder="0" allowfullscreen></iframe>
-              </div>
+              <p>Gender: <span class="bigger">{{ form.gender }}</span></p>
+              <p>Name: <span class="bigger">{{ form.prename }} {{ form.name }}</span></p>
+              <p>Email: <span class="bigger">{{ form.email }}</span></p>
+              <p>Address: <span class="bigger">{{ form.address }}</span></p>
+              <p>City: <span class="bigger">{{ form.zip }} {{ form.city }}</span></p>
+              <p>Befree Location: <span class="bigger">{{ form.location }}</span></p>
+              <p>Befree Package: <span class="bigger">{{ form.package }}</span></p>
               <div class="con-section__cta">
-                <a class="btn bigger" href="#" @click.prevent="selectCityOverlay = true">Change to other location</a>
+                <input type="submit" class="btn btn--square bigger" value="Proceed to payment">
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </form>
+
     </main>
 
     <!-- Footer Section -->

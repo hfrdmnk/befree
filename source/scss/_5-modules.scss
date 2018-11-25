@@ -692,3 +692,62 @@
     }
   }
 }
+
+// ## Form ##
+form {
+  input[type=submit] {
+    cursor: pointer;
+  }
+
+  .form {
+    &__item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1em;
+    }
+
+    &__input {
+      background-color: transparent;
+      border: 4px solid transparent;
+      border-bottom: 4px solid $main2;
+      padding: 0.5em;
+
+      &:focus {
+        outline: none;
+        border: 4px solid $main2;
+      }
+
+      &::placeholder {
+        color: rgba($main2, 0.3);
+      }
+    }
+  }
+}
+
+// Breakpoints 
+@include breakpoint(small) {
+  form {
+    .form {
+      &__row {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__item {
+        width: 100%;
+
+        &--1-2 {
+          width: 49%;
+        }
+
+        &--1-3 {
+          width: 33%;
+        }
+
+        &--2-3 {
+          width: 65%;
+        }
+      }
+    }
+  }
+}

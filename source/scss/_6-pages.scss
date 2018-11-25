@@ -324,3 +324,30 @@
     }
   }
 }
+
+// ## Tickets ##
+.con-section--form {
+  .con-section__col--3-4 {
+    margin-bottom: $wrapper-padding * 2;
+  }
+}
+
+// Breakpoints
+@include breakpoint(medium) {
+  .con-section--form {
+    .con-section__col--1-4 {
+      justify-content: flex-start;
+      width: 25%;
+      flex: none;
+
+      h5 {
+        margin: 0;
+      }
+    }
+  
+    .con-section__col--3-4 {
+      width: 75%;
+      flex: none;
+    }
+  }
+}

@@ -323,25 +323,33 @@ body {
   font-size: 16px;
 }
 
-body {
+body,
+.form__input,
+input {
   font-family: "museo-sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: 500;
   line-height: 1.5;
   color: #5544FF;
 }
 
-body {
+body,
+.form__input,
+input {
   font-size: 16px;
 }
 
 @media screen and (min-width: 768px) {
-  body {
+  body,
+  .form__input,
+  input {
     font-size: calc(0.53763vw + 11.87097px);
   }
 }
 
 @media screen and (min-width: 1140px) {
-  body {
+  body,
+  .form__input,
+  input {
     font-size: 18px;
   }
 }
@@ -1407,6 +1415,63 @@ main {
   }
 }
 
+form input[type=submit] {
+  cursor: pointer;
+}
+
+form .form__item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+form .form__input {
+  background-color: transparent;
+  border: 4px solid transparent;
+  border-bottom: 4px solid #5544FF;
+  padding: 0.5em;
+}
+
+form .form__input:focus {
+  outline: none;
+  border: 4px solid #5544FF;
+}
+
+form .form__input::-webkit-input-placeholder {
+  color: rgba(85, 68, 255, 0.3);
+}
+
+form .form__input:-ms-input-placeholder {
+  color: rgba(85, 68, 255, 0.3);
+}
+
+form .form__input::-ms-input-placeholder {
+  color: rgba(85, 68, 255, 0.3);
+}
+
+form .form__input::placeholder {
+  color: rgba(85, 68, 255, 0.3);
+}
+
+@media screen and (min-width: 48em) {
+  form .form__row {
+    display: flex;
+    justify-content: space-between;
+  }
+  form .form__item {
+    width: 100%;
+  }
+  form .form__item--1-2 {
+    width: 49%;
+  }
+  form .form__item--1-3 {
+    width: 33%;
+  }
+  form .form__item--2-3 {
+    width: 65%;
+  }
+}
+
 .con-section--about .con-section__col--1-4 {
   display: none;
 }
@@ -1685,5 +1750,24 @@ main {
   .con-section--cities .city__info {
     width: 100%;
     text-align: center;
+  }
+}
+
+.con-section--form .con-section__col--3-4 {
+  margin-bottom: 48px;
+}
+
+@media screen and (min-width: 71.25em) {
+  .con-section--form .con-section__col--1-4 {
+    justify-content: flex-start;
+    width: 25%;
+    flex: none;
+  }
+  .con-section--form .con-section__col--1-4 h5 {
+    margin: 0;
+  }
+  .con-section--form .con-section__col--3-4 {
+    width: 75%;
+    flex: none;
   }
 }

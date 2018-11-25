@@ -21,6 +21,19 @@ var controller = new Vue({
         // Current City (from LocalStorage)
         currentCity: '',
 
+        // Buy Form
+        form: {
+            gender: null,
+            prename: null,
+            name: null,
+            email: null,
+            address: null,
+            zip: null,
+            city: null,
+            location: null,
+            package: null
+        },
+
         // Helpers
         date: null,
         now: Math.trunc((new Date()).getTime() / 1000),
