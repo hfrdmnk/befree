@@ -872,6 +872,19 @@ main {
   }
 }
 
+.nojs-overlay {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #FFBBCC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -1417,6 +1430,7 @@ main {
 
 form input[type=submit] {
   cursor: pointer;
+  -webkit-appearance: none;
 }
 
 form .form__item {

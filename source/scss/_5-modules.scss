@@ -99,6 +99,20 @@
   }
 }
 
+// ## No-JS Overlay
+.nojs-overlay {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $main1-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 // ## Topbar ##
 .topbar {
   display: flex;
@@ -697,6 +711,7 @@
 form {
   input[type=submit] {
     cursor: pointer;
+    -webkit-appearance: none;
   }
 
   .form {

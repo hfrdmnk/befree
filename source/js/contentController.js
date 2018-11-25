@@ -23,15 +23,15 @@ var controller = new Vue({
 
         // Buy Form
         form: {
-            gender: null,
-            prename: null,
-            name: null,
-            email: null,
-            address: null,
-            zip: null,
-            city: null,
-            location: null,
-            package: null
+            gender: '',
+            prename: '',
+            name: '',
+            email: '',
+            address: '',
+            zip: '',
+            city: '',
+            location: '',
+            package: ''
         },
 
         // Helpers

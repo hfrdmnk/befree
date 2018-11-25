@@ -27,6 +27,10 @@
   <!-- Content inside of #app is partly managed by Vue.js -->
   <div id="app">
 
+    <!-- Noscript -->
+    <!-- partial:html-partials/_no-js.html -->
+    <!-- partial -->
+
     <!-- Loading Screen -->
     <!-- partial:html-partials/_loading-screen.html -->
     <!-- partial -->
@@ -67,7 +71,7 @@
         <div class="wrapper con-section__wrapper">
           <div class="con-section__title">
             <h4 class="h5">Be&nbsp;quick!</h4>
-            <h3 class="h2">Order tickets</h3>
+            <h3 class="h2">Order your tickets</h3>
           </div>
           <div class="con-section__content">
             <div class="con-section__col--1-4">
@@ -125,7 +129,7 @@
                 <div class="form__item">
                     <label for="location" class="form__label">Befree Location:*</label>
                     <select class="form__input bigger" name="location" v-model="form.location" required>
-                      <option v-for="city in locations" :value="city.fields.place">{{ city.fields.place }} – {{ city.fields.date }}</option>
+                      <option v-for="city in locations" :value="city.fields.place">{{ city.fields.place }}: {{ city.fields.date }}</option>
                     </select>
                   </div>
               </div>

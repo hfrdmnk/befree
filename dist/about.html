@@ -27,6 +27,13 @@
   <!-- Content inside of #app is partly managed by Vue.js -->
   <div id="app">
 
+    <!-- Noscript -->
+    <!-- partial:html-partials/_no-js.html -->
+    <noscript class="nojs-overlay">
+    <p class="h2">Please enable JavaScript</p>
+</noscript>
+    <!-- partial -->
+
     <!-- Loading Screen -->
     <!-- partial:html-partials/_loading-screen.html -->
     <div class="loading-overlay" v-if="loading">
