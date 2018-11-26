@@ -1,5 +1,3 @@
-Vue.config.devtools = true;
-
 // Vue Instance
 var controller = new Vue({
     el: '#app',
@@ -7,7 +5,7 @@ var controller = new Vue({
         // Airtable Config Data
         airtable: {
             url: 'https://api.airtable.com/v0/',
-            key: 'keyO54NEvmY5VwVOO',
+            key: 'keyh86PHWCvZoFxPU',
             id: 'appJfav4dlJdonWhY'
         },
 

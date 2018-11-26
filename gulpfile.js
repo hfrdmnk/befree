@@ -16,7 +16,7 @@ var autoprefixer = require('autoprefixer'),
 
 // paths
 var styleSrc = 'source/scss/*.scss',
-    htmlSrc = 'source/**/*.html',
+    htmlSrc = 'source/*.html',
     vendorSrc = 'source/js/vendors/',
     scriptSrc = 'source/js/*.js',
     imgSrc = 'source/assets/img/**/*',
@@ -33,7 +33,7 @@ var styleSrc = 'source/scss/*.scss',
 
 // Copy HTML
 gulp.task('html', function() {
-    return gulp.src('source/**/*.html')
+    return gulp.src('source/*.html')
         .pipe(plumber())
         .pipe(injectPartials())
         .pipe(gulp.dest('dist'));
