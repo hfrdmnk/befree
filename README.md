@@ -1,6 +1,12 @@
 # Befree
 Website for the fictitious Befree Festival  
-Visit it at [www.befreefestival.com](https://www.befreefestival.com)  
+:link: [www.befreefestival.com](https://www.befreefestival.com) 
+
+## :wrench: Tools  
+- [GulpJS](https://gulpjs.com/) with plugins (:arrow_right: see gulpfile.js for all plugins and how the build process works)
+- [VueJS](https://vuejs.org/)
+- [Airtable API](https://airtable.com/api)
+- [BaguetteBox](https://github.com/feimosi/baguetteBox.js)
 
 This site was tested in Chrome 70 and Firefox 63
 
