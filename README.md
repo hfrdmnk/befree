@@ -20,6 +20,5 @@ cd befree
 npm install
 gulp
 ```
-
-
+---
 This site was tested in Chrome 70 and Firefox 63
