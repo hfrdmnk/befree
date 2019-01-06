@@ -8,5 +8,18 @@ Website for the fictitious Befree Festival
 - [Airtable API](https://airtable.com/api)
 - [BaguetteBox](https://github.com/feimosi/baguetteBox.js)
 
-This site was tested in Chrome 70 and Firefox 63
+## :raised_hands: How to use this repo
+In order to work with this repo, you need to have [GulpJS](https://gulpjs.com/) installed.  
+You can do this like so:  
+```bash
+sudo npm install -g gulp
+```
+Then, after cloning this repo to your local machine, you can run the following commands to get up and running:  
+```bash
+cd befree
+npm install
+gulp
+```
 
+
+This site was tested in Chrome 70 and Firefox 63
