@@ -21,4 +21,4 @@ npm install
 gulp
 ```
 ---
-This site was tested in Chrome 70 and Firefox 63
+_This site was tested in Chrome 70 and Firefox 63_
