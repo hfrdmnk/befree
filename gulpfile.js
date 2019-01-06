@@ -11,7 +11,7 @@ var autoprefixer = require('autoprefixer'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     images = require('gulp-imagemin'),
-    injectPartials = require('gulp-inject-partials'),
+    fileinclude = require('gulp-file-include'),
     browserSync = require('browser-sync').create();
 
 // paths
@@ -35,7 +35,9 @@ var styleSrc = 'source/scss/*.scss',
 gulp.task('html', function() {
     return gulp.src('source/*.html')
         .pipe(plumber())
-        .pipe(injectPartials())
+        .pipe(fileinclude({
+            basepath: 'source/html-partials/'
+        }))
         .pipe(gulp.dest('dist'));
 });
 

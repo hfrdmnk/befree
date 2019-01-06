@@ -28,29 +28,25 @@
   <div id="app">
 
     <!-- Noscript -->
-    <!-- partial:html-partials/_no-js.html -->
-    <!-- partial -->
+    @@include('_no-js.html')
 
     <!-- Loading Screen -->
-    <!-- partial:html-partials/_loading-screen.html -->
-    <!-- partial -->
+    @@include('_loading-screen.html')
 
     <!-- City Selection -->
-    <!-- partial:html-partials/_city-select.html -->
-    <!-- partial -->
+    @@include('_city-select.html')
 
     <!-- Background Image -->
     <div v-if="festivalInfo[0]" class="bg" :style="{ backgroundImage: 'url(assets/img/bg/' + currentCity + '.png)' }"></div>
 
-    <!-- partial:html-partials/_mainnav.html -->
-    <!-- partial -->
+    <!-- Main Nav -->
+    @@include('_mainnav.html')
 
     <!-- Header Section -->
     <header v-if="festivalInfo[0]">
       <div class="wrapper header__wrapper">
         
-        <!-- partial:html-partials/_topbar.html -->
-        <!-- partial -->
+        @@include('_topbar.html')
 
         <div class="header__title">
           <h1>Befree {{ festivalInfo[0].fields.place }}</h1>
@@ -78,8 +74,7 @@
             <div class="con-section__col--1-4">
                 <h5 class="h4">Follow us here</h5>
                 <ul class="social-list social-list--desktop">
-                  <!-- partial:html-partials/_sociallist-items.html -->
-                  <!-- partial -->
+                  @@include('_sociallist-items.html')
                 </ul>
             </div>
             <div class="con-section__col--3-4">
@@ -90,8 +85,7 @@
                 </video>
                 <p>Befree – the music festival for all edm-lovers out there. Right in the middle of the summer, at three locations all over Europe. With world-class acts like ‚The Chainsmokers‘, ‚Marshmello‘ or ‚Kygo‘. <a href="tickets.html">Grab your tickets now</a> to save yourself a place at the hottest new festival in Europe, coming to a city near you in 2019.</p>
                 <ul class="social-list">
-                  <!-- partial:html-partials/_sociallist-items.html -->
-                  <!-- partial -->
+                  @@include('_sociallist-items.html')
                 </ul>
                 <div class="con-section__cta">
                   <a class="btn bigger" href="about.html">Learn more about the festival</a>
@@ -155,8 +149,7 @@
     </main>
 
     <!-- Footer Section -->
-    <!-- partial:html-partials/_footer.html -->
-    <!-- partial -->
+    @@include('_footer.html')
 
   </div>
 
