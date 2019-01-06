@@ -67,7 +67,7 @@ header {
 @include breakpoint(large) {
   .header {
     &__img {
-      left: 30%;
+      left: 35%;
       top: 20%;
     }
   }

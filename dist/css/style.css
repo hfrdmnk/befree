@@ -595,7 +595,7 @@ header {
 
 @media screen and (min-width: 82.5em) {
   .header__img {
-    left: 30%;
+    left: 35%;
     top: 20%;
   }
 }
