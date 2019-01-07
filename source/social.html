@@ -51,7 +51,7 @@
         <div class="header__title">
           <h1>Social Wall</h1>
           <h2 class="h3">Your impressions</h2>
-          <a href="tickets.html" class="btn h4">Submit your impression here!</a>
+          <a href="tickets.html" class="btn h4">Submit your impressions here!</a>
         </div>
         <p class="header__coords h5">{{ festivalInfo[0].fields.latitude }} {{ festivalInfo[0].fields.longitude }}</p>
       </div>
@@ -102,6 +102,39 @@
           </div>
         </div>
       </section>
+
+      <!-- Form Section -->
+      <form action="#" class="con-section con-section--form" method="GET">
+          <div class="wrapper con-section__wrapper">
+            <div class="con-section__title">
+              <h4 class="h5">Be&nbsp;creative</h4>
+              <h3 class="h2">Send us your impressions</h3>
+            </div>
+            <div class="con-section__content">
+              <div class="con-section__col--1-4">
+                  <h5 class="h4">Your upload</h5>
+              </div>
+              <div class="con-section__col--3-4">
+                <div class="form__row">
+                  <div class="form__item form__item--1-2">
+                    <label for="title" class="form__label">Title:*</label>
+                    <input type="text" class="form__input bigger" name="title" placeholder="Festival Mood" v-model="upload.title" required>
+                  </div>
+                  <div class="form__item form__item--1-2">
+                    <label for="author" class="form__label">Author:*</label>
+                    <input type="text" class="form__input bigger" name="author" placeholder="John Doe" v-model="upload.form" required>
+                  </div>
+                </div>
+                <div class="form__row">
+                  <div class="form__item">
+                    <label for="tags" class="form__label">Tags:</label>
+                    <input type="text" class="form__input bigger" name="tags" placeholder="people, mood" v-model="upload.tags">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
 
     </main>
 

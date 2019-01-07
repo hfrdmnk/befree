@@ -36,6 +36,14 @@ var controller = new Vue({
             package: ''
         },
 
+        // Upload Form
+        upload: {
+            title: '',
+            author: '',
+            tags: '',
+            accepted: false
+        },
+
         // Helpers
         date: null,
         now: Math.trunc((new Date()).getTime() / 1000),
