@@ -351,3 +351,90 @@
     }
   }
 }
+
+// ## Social ##
+.con-section--wall {
+  .social-gallery {
+    column-count: 1;
+    column-gap: $wrapper-padding;
+    
+    &__item {
+      max-width: 100%;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      margin-bottom: $wrapper-padding;
+    }
+
+    &__media {
+      max-width: 100%;
+      display: block;
+      margin: 0;
+    }
+
+    &__info {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: $main2;
+      padding: $wrapper-padding / 2 $wrapper-padding;
+      color: $white;
+    }
+
+    &__desc {
+      width: 85%;
+      padding: $wrapper-padding / 2 0;
+
+      * {
+        margin: 0;
+      }
+    }
+
+    &__likes {
+      width: 15%;
+      padding: $wrapper-padding / 2 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+      * {
+        margin: 0;
+      }
+      
+      svg {
+        fill: $white;
+        width: 1.5em;
+        cursor: pointer;
+      }
+    }
+
+    &__tags {
+      padding: $wrapper-padding / 2 0;
+      width: 100%;
+
+      span {
+        background-color: $white;
+        border-radius: 1em;
+        color: $main2;
+        padding: 0.4em 0.5em;
+        margin: 0 8px 8px 0;  
+      }
+    }
+  }
+}
+
+// Breakpoints
+@include breakpoint(small) {
+  .con-section--wall {
+    .social-gallery {
+      column-count: 2;
+    }
+  }
+}
+
+@include breakpoint(medium) {
+  .con-section--wall {
+    .social-gallery {
+      column-count: 3;
+    }
+  }
+}

@@ -1786,3 +1786,87 @@ form .form__input::placeholder {
     flex: none;
   }
 }
+
+.con-section--wall .social-gallery {
+  -webkit-column-count: 1;
+          column-count: 1;
+  -webkit-column-gap: 24px;
+          column-gap: 24px;
+}
+
+.con-section--wall .social-gallery__item {
+  max-width: 100%;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+          break-inside: avoid;
+  margin-bottom: 24px;
+}
+
+.con-section--wall .social-gallery__media {
+  max-width: 100%;
+  display: block;
+  margin: 0;
+}
+
+.con-section--wall .social-gallery__info {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #5544FF;
+  padding: 12px 24px;
+  color: #FFFFFF;
+}
+
+.con-section--wall .social-gallery__desc {
+  width: 85%;
+  padding: 12px 0;
+}
+
+.con-section--wall .social-gallery__desc * {
+  margin: 0;
+}
+
+.con-section--wall .social-gallery__likes {
+  width: 15%;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.con-section--wall .social-gallery__likes * {
+  margin: 0;
+}
+
+.con-section--wall .social-gallery__likes svg {
+  fill: #FFFFFF;
+  width: 1.5em;
+  cursor: pointer;
+}
+
+.con-section--wall .social-gallery__tags {
+  padding: 12px 0;
+  width: 100%;
+}
+
+.con-section--wall .social-gallery__tags span {
+  background-color: #FFFFFF;
+  border-radius: 1em;
+  color: #5544FF;
+  padding: 0.4em 0.5em;
+  margin: 0 8px 8px 0;
+}
+
+@media screen and (min-width: 48em) {
+  .con-section--wall .social-gallery {
+    -webkit-column-count: 2;
+            column-count: 2;
+  }
+}
+
+@media screen and (min-width: 71.25em) {
+  .con-section--wall .social-gallery {
+    -webkit-column-count: 3;
+            column-count: 3;
+  }
+}
