@@ -1,3 +1,6 @@
+// Vue Devtools
+Vue.config.devtools = true;
+
 // Vue Instance
 var controller = new Vue({
     el: '#app',
@@ -15,6 +18,7 @@ var controller = new Vue({
         headliner: [],
         mediumActs: [],
         smallActs: [],
+        socialWall: [],
 
         // Current City (from LocalStorage)
         currentCity: '',
@@ -115,28 +119,37 @@ var controller = new Vue({
                             }).then(function(res) {
                                 self.smallActs = res.data.records;
 
-                                // All Data fetched!
-                                // Countdown Prep
-                                self.date = Math.trunc(Date.parse(self.festivalInfo[0].fields.startTimestamp) / 1000);
-                                window.setInterval(function() {
-                                    self.now = Math.trunc((new Date()).getTime() / 1000);
-                                }, 1000);
+                                // Get Social Wall
+                                axios.get(self.airtable.url + self.airtable.id + "/socialWall",
+                                {
+                                    headers: { Authorization: "Bearer " + self.airtable.key }
+                                }).then(function(res) {
+                                    self.socialWall = res.data.records;
 
-                                // Init stuff
-                                baguetteBox.run('.gallery');
+                                    // All Data fetched!
+                                    // Countdown Prep
+                                    self.date = Math.trunc(Date.parse(self.festivalInfo[0].fields.startTimestamp) / 1000);
+                                    window.setInterval(function() {
+                                        self.now = Math.trunc((new Date()).getTime() / 1000);
+                                    }, 1000);
 
-                                // Some nice ASCII Art
-                                console.log("%c  ____        __                 _                          _       ", "color: #54F");
-                                console.log("%c | __ )  ___ / _|_ __ ___  ___  (_)___   _ __ ___  __ _  __| |_   _ ", "color: #54F");
-                                console.log("%c |  _ \\ / _ \\ |_| '__/ _ \\/ _ \\ | / __| | '__/ _ \\/ _` |/ _` | | | |", "color: #54F");
-                                console.log("%c | |_) |  __/  _| | |  __/  __/ | \\__ \\ | | |  __/ (_| | (_| | |_| |", "color: #54F");
-                                console.log("%c |____/ \\___|_| |_|  \\___|\\___| |_|___/ |_|  \\___|\\__,_|\\__,_|\\__, |", "color: #54F");
-                                console.log("%c                                                              |___/ ", "color: #54F");
+                                    // Init stuff
+                                    baguetteBox.run('.gallery');
 
-                                // Loading complete!
-                                setTimeout(function() {
-                                    self.loading = false;
-                                }, 100);
+                                    // Some nice ASCII Art
+                                    console.log("%c  ____        __                 _                          _       ", "color: #54F");
+                                    console.log("%c | __ )  ___ / _|_ __ ___  ___  (_)___   _ __ ___  __ _  __| |_   _ ", "color: #54F");
+                                    console.log("%c |  _ \\ / _ \\ |_| '__/ _ \\/ _ \\ | / __| | '__/ _ \\/ _` |/ _` | | | |", "color: #54F");
+                                    console.log("%c | |_) |  __/  _| | |  __/  __/ | \\__ \\ | | |  __/ (_| | (_| | |_| |", "color: #54F");
+                                    console.log("%c |____/ \\___|_| |_|  \\___|\\___| |_|___/ |_|  \\___|\\__,_|\\__,_|\\__, |", "color: #54F");
+                                    console.log("%c                                                              |___/ ", "color: #54F");
+
+                                    // Loading complete!
+                                    setTimeout(function() {
+                                        self.loading = false;
+                                    }, 100);
+
+                                }).catch(function(err) { console.log(err); })
 
                             }).catch(function(err) { console.log(err); })
 

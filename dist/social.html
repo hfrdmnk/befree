@@ -121,7 +121,31 @@
     <!-- Main Section -->
     <main v-if="festivalInfo[0]">
 
-      
+      <!-- Wall Section -->
+      <section class="con-section con-section--wall">
+        <div class="wrapper con-section__wrapper">
+          <div class="con-section__title">
+            <h4 class="h5">Your&nbsp;impressions</h4>
+            <h3 class="h2">Social Wall</h3>
+          </div>
+          <div class="con-section__content">
+            <div class="social-gallery">
+              <div class="social-gallery__item" v-for="post in socialWall">
+                <img class="social-gallery__media" :src="'assets/img/social/' + post.fields.fileName + '.jpg'" :alt="post.fields.title" v-if="post.fields.type[0] == 'photo'">
+                <video class="social-gallery__media" :src="'assets/img/social/' + post.fields.fileName + '.mp4'" controls v-else>
+                  Sorry, your browser doesn't support embedded videos, 
+                  but don't worry, you can <a :href="'assets/img/social/' + post.fields.fileName + '.mp4'">download it</a>
+                  and watch it with your favorite video player!
+                </video>
+                <div class="social-gallery__desc">
+                  <p class="h4">{{ post.fields.title  }}</p>
+                  <p>{{ post.fields.author  }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </main>
 
