@@ -132,7 +132,7 @@
             <div class="social-gallery">
               <div class="social-gallery__item" v-for="post in socialWall">
                 <img class="social-gallery__media" :src="'assets/img/social/' + post.fields.fileName + '.jpg'" :alt="post.fields.title" v-if="post.fields.type[0] == 'photo'">
-                <video class="social-gallery__media" :src="'assets/img/social/' + post.fields.fileName + '.mp4'" controls v-else>
+                <video class="social-gallery__media" :src="'assets/img/social/' + post.fields.fileName + '.mp4'" controls :poster="'assets/img/social/poster/' + post.fields.fileName + '.jpg'" v-else>
                   Sorry, your browser doesn't support embedded videos, 
                   but don't worry, you can <a :href="'assets/img/social/' + post.fields.fileName + '.mp4'">download it</a>
                   and watch it with your favorite video player!
