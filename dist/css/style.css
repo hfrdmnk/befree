@@ -1466,6 +1466,7 @@ form .form__item--file label {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   height: 5em;
   width: 100%;
   border: 4px dashed #5544FF;
@@ -1966,6 +1967,7 @@ form .form__input:not([type=file])::placeholder {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 @media screen and (min-width: 48em) {
