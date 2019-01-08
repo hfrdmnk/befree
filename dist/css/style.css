@@ -1440,31 +1440,122 @@ form .form__item {
   margin-bottom: 1em;
 }
 
-form .form__input {
+form .form__item--file {
+  display: block;
+}
+
+form .form__item--file input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+form .form__item--file input:focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+form .form__item--file input + label * {
+  pointer-events: none;
+}
+
+form .form__item--file label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5em;
+  width: 100%;
+  border: 4px dashed #5544FF;
+  cursor: pointer;
+}
+
+form .form__item--file label.active {
+  border-style: solid;
+  background-color: #5544FF;
+  color: #FFFFFF;
+}
+
+form .form__item--check {
+  display: block;
+  padding: 1em 0;
+}
+
+form .form__item--check .checkbox-container {
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+form .form__item--check .checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+form .form__item--check .checkbox-container input:checked + span::after {
+  display: block;
+}
+
+form .form__item--check .checkbox-container span {
+  position: absolute;
+  top: 0.1em;
+  height: 1.5em;
+  width: 1.5em;
+  border: 4px solid #5544FF;
+  cursor: pointer;
+}
+
+form .form__item--check .checkbox-container span::after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 0.1em;
+  left: 0.35em;
+  width: 0.4em;
+  height: 0.8em;
+  border: solid #5544FF;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+form .form__item--check .checkbox-container p {
+  padding-top: 2em;
+}
+
+form .form__input:not([type=file]) {
   background-color: transparent;
   border: 4px solid transparent;
   border-bottom: 4px solid #5544FF;
   padding: 0.5em;
 }
 
-form .form__input:focus {
+form .form__input:not([type=file]):focus {
   outline: none;
   border: 4px solid #5544FF;
 }
 
-form .form__input::-webkit-input-placeholder {
+form .form__input:not([type=file])::-webkit-input-placeholder {
   color: rgba(85, 68, 255, 0.3);
 }
 
-form .form__input:-ms-input-placeholder {
+form .form__input:not([type=file]):-ms-input-placeholder {
   color: rgba(85, 68, 255, 0.3);
 }
 
-form .form__input::-ms-input-placeholder {
+form .form__input:not([type=file])::-ms-input-placeholder {
   color: rgba(85, 68, 255, 0.3);
 }
 
-form .form__input::placeholder {
+form .form__input:not([type=file])::placeholder {
   color: rgba(85, 68, 255, 0.3);
 }
 
@@ -1475,6 +1566,10 @@ form .form__input::placeholder {
   }
   form .form__item {
     width: 100%;
+  }
+  form .form__item--check .checkbox-container p {
+    padding-top: 0em;
+    padding-left: 2em;
   }
   form .form__item--1-2 {
     width: 49%;
@@ -1856,6 +1951,21 @@ form .form__input::placeholder {
   padding: 0.4em 0.5em;
   margin: 0 8px 8px 0;
   cursor: pointer;
+}
+
+.upload-success {
+  position: fixed;
+  cursor: pointer;
+  z-index: 300;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFBBCC;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 48em) {

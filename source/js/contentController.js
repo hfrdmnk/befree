@@ -41,7 +41,10 @@ var controller = new Vue({
             title: '',
             author: '',
             tags: '',
-            accepted: false
+            accepted: false,
+            file: 'click to select your file',
+            fileSelected: false,
+            submitted: false
         },
 
         // Helpers
@@ -88,6 +91,25 @@ var controller = new Vue({
             this.currentCity = city;
             this.getData();
             this.selectCityOverlay = false;
+        },
+
+        // Fileupload
+        fileUpload: function(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            var labelText = files[0].name + ' selected';
+            this.upload.file = labelText;
+            this.upload.fileSelected = true;
+        },
+
+        // Close Upload Overlay 
+        closeUpload: function() {
+            this.upload.title = '';
+            this.upload.author = '';
+            this.upload.tags = '';
+            this.upload.accepted = false;
+            this.upload.file = 'click to select your file';
+            this.upload.fileSelected = false;
+            this.upload.submitted = false;
         },
 
         // Get Data

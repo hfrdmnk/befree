@@ -50,7 +50,7 @@
 
         <div class="header__title">
           <h1>Social Wall</h1>
-          <h2 class="h3">Feel the vibes</h2>
+          <h2 class="h3">Feel the vibe</h2>
           <a href="tickets.html" class="btn h4">Submit your impressions here!</a>
         </div>
         <p class="header__coords h5">{{ festivalInfo[0].fields.latitude }} {{ festivalInfo[0].fields.longitude }}</p>
@@ -104,7 +104,13 @@
       </section>
 
       <!-- Form Section -->
-      <form action="#" class="con-section con-section--form" method="GET">
+      <div class="upload-success" v-if="upload.submitted" @click="closeUpload()">
+        <h2>Thanks for your impression!</h2>
+        <p>We'll publish it in a few moments...</p>
+        <p>(Click anywhere on this overlay to close it)</p>
+      </div>
+
+      <form action="#" class="con-section con-section--form" method="GET" @submit.prevent="upload.submitted = true">
           <div class="wrapper con-section__wrapper">
             <div class="con-section__title">
               <h4 class="h5">Be&nbsp;creative</h4>
@@ -122,7 +128,7 @@
                   </div>
                   <div class="form__item form__item--1-2">
                     <label for="author" class="form__label">Author:*</label>
-                    <input type="text" class="form__input bigger" name="author" placeholder="John Doe" v-model="upload.form" required>
+                    <input type="text" class="form__input bigger" name="author" placeholder="John Doe" v-model="upload.author" required>
                   </div>
                 </div>
                 <div class="form__row">
@@ -130,6 +136,26 @@
                     <label for="tags" class="form__label">Tags:</label>
                     <input type="text" class="form__input bigger" name="tags" placeholder="people, mood" v-model="upload.tags">
                   </div>
+                </div>
+                <div class="form__row">
+                  <div class="form__item form__item--file">
+                    <input type="file" id="file" class="form__input bigger" name="file" @change="fileUpload(event)">
+                    <label for="file" class="form__label" :class="{ active: upload.fileSelected }">{{ upload.file }}</label>
+                  </div>
+                </div>
+                <div class="form__row">
+                  <div class="form__item form__item--check">
+                    <label for="checkbox" class="checkbox-container">
+                      <input type="checkbox" name="Checkbox" id="checkbox" v-model="upload.accepted">
+                      <span></span>
+                      <p>*Befree is allowed to post this photo/video on their site</p>
+                    </label>
+                  </div>
+                </div>
+                <div class="con-section__cta">
+                  <input type="submit" class="btn btn--square bigger" value="Submit" 
+                  v-if="upload.title.length > 0 && upload.author.length > 0 && upload.fileSelected && upload.accepted"
+                  >
                 </div>
               </div>
             </div>

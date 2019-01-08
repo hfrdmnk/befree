@@ -423,6 +423,21 @@
   }
 }
 
+.upload-success {
+  position: fixed;
+  cursor: pointer;
+  z-index: 300;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $main1-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 // Breakpoints
 @include breakpoint(small) {
   .con-section--wall {
