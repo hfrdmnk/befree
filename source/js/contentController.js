@@ -96,6 +96,9 @@ var controller = new Vue({
         // Fileupload
         fileUpload: function(e) {
             var files = e.target.files || e.dataTransfer.files;
+            if(files.length == 0) {
+                return false;
+            }
             var labelText = files[0].name + ' selected';
             this.upload.file = labelText;
             this.upload.fileSelected = true;
