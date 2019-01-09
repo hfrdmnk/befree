@@ -536,6 +536,10 @@ img {
   color: #FFFFFF;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .bg {
   height: 100vh;
   width: 100vw;

@@ -51,7 +51,7 @@
         <div class="header__title">
           <h1>Social Wall</h1>
           <h2 class="h3">Feel the vibe</h2>
-          <a href="tickets.html" class="btn h4">Submit your impressions here!</a>
+          <a href="#upload" class="btn h4">Submit your impressions here!</a>
         </div>
         <p class="header__coords h5">{{ festivalInfo[0].fields.latitude }} {{ festivalInfo[0].fields.longitude }}</p>
       </div>
@@ -110,7 +110,7 @@
         <p>(Click anywhere on this overlay to close it)</p>
       </div>
 
-      <form action="#" class="con-section con-section--form" method="GET" @submit.prevent="upload.submitted = true">
+      <form action="#" class="con-section con-section--form" id="upload" method="GET" @submit.prevent="upload.submitted = true">
           <div class="wrapper con-section__wrapper">
             <div class="con-section__title">
               <h4 class="h5">Be&nbsp;creative</h4>
