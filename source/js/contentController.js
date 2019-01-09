@@ -93,6 +93,16 @@ var controller = new Vue({
             this.selectCityOverlay = false;
         },
 
+        // Handle Likes
+        likes: function(item) {
+            if(!item.fields.liked) {
+                item.fields.likes++;
+            } else {
+                item.fields.likes--;
+            }
+            item.fields.liked = !item.fields.liked;
+        },
+
         // Fileupload
         fileUpload: function(e) {
             var files = e.target.files || e.dataTransfer.files;

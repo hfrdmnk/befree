@@ -1932,6 +1932,7 @@ form .form__input:not([type=file])::placeholder {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .con-section--wall .social-gallery__likes * {
