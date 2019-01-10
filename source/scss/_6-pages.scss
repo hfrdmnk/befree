@@ -438,6 +438,21 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  .check {
+    height: 8em;
+    width: 8em;
+    fill: $main2;
+  }
+
+  .close {
+    height: 2em;
+    width: 2em;
+    fill: $main2;
+    position: absolute;
+    top: $wrapper-padding;
+    right: $wrapper-padding;
+  }
 }
 
 // Breakpoints

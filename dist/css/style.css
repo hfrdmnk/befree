@@ -1975,6 +1975,21 @@ form .form__input:not([type=file])::placeholder {
   text-align: center;
 }
 
+.upload-success .check {
+  height: 8em;
+  width: 8em;
+  fill: #5544FF;
+}
+
+.upload-success .close {
+  height: 2em;
+  width: 2em;
+  fill: #5544FF;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
 @media screen and (min-width: 48em) {
   .con-section--wall .social-gallery {
     -webkit-column-count: 2;
