@@ -1935,6 +1935,10 @@ form .form__input:not([type=file])::placeholder {
 
 .con-section--wall .social-gallery__likes * {
   margin: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .con-section--wall .social-gallery__likes svg {
@@ -1946,6 +1950,10 @@ form .form__input:not([type=file])::placeholder {
 .con-section--wall .social-gallery__tags {
   padding: 12px 0;
   width: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .con-section--wall .social-gallery__tags span {
@@ -1954,7 +1962,7 @@ form .form__input:not([type=file])::placeholder {
   color: #5544FF;
   padding: 0.4em 0.5em;
   margin: 0 8px 8px 0;
-  cursor: pointer;
+  cursor: default;
 }
 
 .upload-success {
