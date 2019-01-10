@@ -104,8 +104,8 @@ var controller = new Vue({
         },
 
         // Fileupload
-        fileUpload: function(e) {
-            var files = e.target.files || e.dataTransfer.files;
+        fileUpload: function(event) {
+            var files = event.target.files || event.dataTransfer.files;
             if(files.length == 0) {
                 return false;
             }

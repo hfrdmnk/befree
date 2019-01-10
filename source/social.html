@@ -144,7 +144,7 @@
                 </div>
                 <div class="form__row">
                   <div class="form__item form__item--file">
-                    <input type="file" id="file" class="form__input bigger" name="file" @change="fileUpload(event)">
+                    <input type="file" id="file" class="form__input bigger fileinput" name="file" @change="fileUpload($event)">
                     <label for="file" class="form__label" :class="{ active: upload.fileSelected }">{{ upload.file }}</label>
                   </div>
                 </div>
