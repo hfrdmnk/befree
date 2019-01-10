@@ -766,16 +766,15 @@ form {
         padding: 1em 0;
 
         .checkbox-container {
+          display: block;
           position: relative;
           user-select: none;
           cursor: pointer;
 
           input {
             position: absolute;
+            z-index: -1;
             opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
 
             &:checked + span::after {
               display: block;
@@ -784,7 +783,6 @@ form {
 
           span {
             position: absolute;
-            top: 0.1em;
             height: 1.5em;
             width: 1.5em;
             border: 4px solid $main2;
